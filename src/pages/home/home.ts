@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { LoginDTO } from '../../models/loginDTO';
+import { AuthService } from '../../services/auth.service';
 
 @IonicPage()
 @Component({
@@ -14,11 +15,17 @@ export class HomePage {
     password: ""
   };
 
-  constructor(public navCtrl: NavController) {
+  constructor(
+    public navCtrl: NavController,
+    public auth: AuthService) {
 
   }
 
   login() {
-    console.log(this.creds);
+    this.auth.authenticate(this.creds)
+      .subscribe(response => {
+        console.log(response.headers.get('Authorization'));
+      },
+      error => {});
   }
 }
