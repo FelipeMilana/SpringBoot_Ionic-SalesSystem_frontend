@@ -12,16 +12,19 @@
       <ion-label stacked>Nome</ion-label>
       <ion-input formControlName="name" type="text"></ion-input>
     </ion-item>
+    <p class="danger" *ngIf="formGroup.controls.name.dirty && formGroup.controls.name.errors" margin-left>Nome inválido</p>
 
     <ion-item>
       <ion-label stacked>Email</ion-label>
       <ion-input formControlName="email" type="email" placeholder="example@gmail.com"></ion-input>
     </ion-item>
+    <p class="danger" *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors" margin-left>Email inválido</p>
 
     <ion-item>
       <ion-label stacked>Senha</ion-label>
       <ion-input formControlName="password" type="password"></ion-input>
     </ion-item>
+    <p class="danger" *ngIf="formGroup.controls.password.dirty && formGroup.controls.password.errors" margin-left>Senha inválida</p>
 
     <ion-card>
       <ion-card-header>
@@ -33,15 +36,17 @@
           <ion-label fixed>Saldo (R$)</ion-label>
           <ion-input formControlName="santanderBalance" type="number" placeholder="0,00"></ion-input>
         </ion-item>
+        <p class="danger" *ngIf="formGroup.controls.santanderBalance.dirty && formGroup.controls.santanderBalance.errors" margin-left>Valor inválido</p>
 
         <img src="assets/imgs/nubank.png">
         <ion-item>
           <ion-label fixed>Saldo (R$)</ion-label>
           <ion-input formControlName="nubankBalance" type="number" placeholder="0,00"></ion-input>
         </ion-item>
+        <p class="danger" *ngIf="formGroup.controls.nubankBalance.dirty && formGroup.controls.nubankBalance.errors" margin-left>Valor inválido</p>
 
     </ion-card>
  
-    <button color="tertiary" ion-button block type="submit">Cadastrar</button>
+    <button color="tertiary" ion-button block type="submit" [disabled]="formGroup.invalid">Cadastrar</button>
   </form>
 </ion-content>
