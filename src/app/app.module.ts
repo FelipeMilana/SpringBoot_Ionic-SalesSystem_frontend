@@ -9,6 +9,7 @@ import { MyApp } from './app.component';
 import { AuthService } from '../services/auth.service';
 import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
 import { StorageService } from '../services/storage.service';
+import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { StorageService } from '../services/storage.service';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,
+    AuthInterceptorProvider,
     ErrorInterceptorProvider,
     StorageService
   ]
