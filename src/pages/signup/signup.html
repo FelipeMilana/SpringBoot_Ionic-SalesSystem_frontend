@@ -7,20 +7,20 @@
 </ion-header>
 
 <ion-content padding>
-  <form (ngSubmit)="signupUser(); $event.preventDefault()">
+  <form [formGroup]="formGroup" (ngSubmit)="signupUser(); $event.preventDefault()">
     <ion-item>
       <ion-label stacked>Nome</ion-label>
-      <ion-input name="name" type="text"></ion-input>
+      <ion-input formControlName="name" type="text"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Email</ion-label>
-      <ion-input name="email" type="email" placeholder="example@gmail.com"></ion-input>
+      <ion-input formControlName="email" type="email" placeholder="example@gmail.com"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Senha</ion-label>
-      <ion-input name="password" type="password"></ion-input>
+      <ion-input formControlName="password" type="password"></ion-input>
     </ion-item>
 
     <ion-card>
@@ -31,13 +31,13 @@
         <img src="assets/imgs/santander.png">
         <ion-item>
           <ion-label fixed>Saldo (R$)</ion-label>
-          <ion-input name="santanderBalance" type="number" placeholder="0,00"></ion-input>
+          <ion-input formControlName="santanderBalance" type="number" placeholder="0,00"></ion-input>
         </ion-item>
 
         <img src="assets/imgs/nubank.png">
         <ion-item>
           <ion-label fixed>Saldo (R$)</ion-label>
-          <ion-input name="nubankBalance" type="number" placeholder="0,00"></ion-input>
+          <ion-input formControlName="nubankBalance" type="number" placeholder="0,00"></ion-input>
         </ion-item>
 
     </ion-card>
