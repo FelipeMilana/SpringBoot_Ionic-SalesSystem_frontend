@@ -27,10 +27,19 @@ export class MainPage {
 
     let localUser = this.storage.getLocalUser();
 
-    this.userService.findByEmail(localUser.email)
+    if(localUser && localUser.email) {
+      this.userService.findByEmail(localUser.email)
       .subscribe(response => {
         this.userName = response['name'];
       },
-      error => {});
+      error => {
+        if(error.status == 403) {
+          this.navCtrl.setRoot('HomePage');
+        }
+      });
+    }
+    else{
+      this.navCtrl.setRoot('HomePage');
+    }
   }
 }
