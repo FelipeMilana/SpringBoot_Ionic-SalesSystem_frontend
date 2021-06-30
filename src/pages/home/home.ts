@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage, LoadingController, NavController } from 'ionic-angular';
 import { LoginDTO } from '../../models/loginDTO';
 import { AuthService } from '../../services/auth.service';
 
@@ -17,15 +17,29 @@ export class HomePage {
 
   constructor(
     public navCtrl: NavController,
-    public auth: AuthService) {
-
+    public auth: AuthService,
+    public loadingCtrl: LoadingController) {
   }
 
   login() {
+    let loader = this.presentLoading();
+
     this.auth.authenticate(this.creds)
       .subscribe(response => {
+        loader.dismiss();
         this.auth.successfulLogin(response.headers.get('Authorization'));
+        this.navCtrl.setRoot('MainPage');
       },
-      error => {});
+      error => {
+        loader.dismiss();
+      });
+  }
+
+  presentLoading() {
+    let loader = this.loadingCtrl.create({
+      content: "Aguarde...",
+    });
+    loader.present();
+    return loader;
   }
 }
