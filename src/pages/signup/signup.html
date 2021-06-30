@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      <h3>Cadastro</h3>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form (ngSubmit)="signupUser(); $event.preventDefault()">
+    <ion-item>
+      <ion-label stacked>Nome</ion-label>
+      <ion-input name="name" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Email</ion-label>
+      <ion-input name="email" type="email" placeholder="example@gmail.com"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Senha</ion-label>
+      <ion-input name="password" type="password"></ion-input>
+    </ion-item>
+
+    <ion-card>
+      <ion-card-header>
+        <b>Dados Bancários</b>
+      </ion-card-header>
+
+        <img src="assets/imgs/santander.png">
+        <ion-item>
+          <ion-label fixed>Saldo (R$)</ion-label>
+          <ion-input name="santanderBalance" type="number" placeholder="0,00"></ion-input>
+        </ion-item>
+
+        <img src="assets/imgs/nubank.png">
+        <ion-item>
+          <ion-label fixed>Saldo (R$)</ion-label>
+          <ion-input name="nubankBalance" type="number" placeholder="0,00"></ion-input>
+        </ion-item>
+
+    </ion-card>
+ 
+    <button color="tertiary" ion-button block type="submit">Cadastrar</button>
+  </form>
+</ion-content>

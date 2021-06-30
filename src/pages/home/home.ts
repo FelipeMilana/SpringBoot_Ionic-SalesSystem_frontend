@@ -51,6 +51,10 @@ export class HomePage {
       });
   }
 
+  signup() {
+    this.navCtrl.push('SignupPage')
+  }
+  
   presentLoading() {
     let loader = this.loadingCtrl.create({
       content: "Aguarde...",
