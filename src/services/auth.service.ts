@@ -26,6 +26,15 @@ export class AuthService {
             });
     }
 
+    refreshToken() {
+        return this.http.get(
+            `${API_CONFIG.baseURL}/auth/refreshToken`, 
+            {
+                observe: 'response',
+                responseType: 'text'
+            });
+    }
+
     successfulLogin(bearerToken: String) {
         let tok = bearerToken.substring(7);
 

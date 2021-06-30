@@ -21,6 +21,22 @@ export class HomePage {
     public loadingCtrl: LoadingController) {
   }
 
+  ionViewDidEnter() {
+    
+    let loader = this.presentLoading();
+
+    this.auth.refreshToken()
+      .subscribe(response => {
+        loader.dismiss();
+        this.auth.successfulLogin(response.headers.get('Authorization'));
+        this.navCtrl.setRoot('MainPage');
+      },
+      error => {
+        loader.dismiss();
+      })
+  }
+
+
   login() {
     let loader = this.presentLoading();
 
