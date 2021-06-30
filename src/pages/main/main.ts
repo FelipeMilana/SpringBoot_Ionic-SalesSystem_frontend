@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/domain/user.service';
 import { StorageService } from '../../services/storage.service';
 
@@ -16,7 +17,8 @@ export class MainPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public storage: StorageService,
-    public userService: UserService) {
+    public userService: UserService,
+    public auth: AuthService) {
   }
 
   ionViewDidLoad() {
@@ -41,5 +43,10 @@ export class MainPage {
     else{
       this.navCtrl.setRoot('HomePage');
     }
+  }
+
+  logout() {
+    this.auth.logout();
+    this.navCtrl.setRoot('HomePage');
   }
 }
