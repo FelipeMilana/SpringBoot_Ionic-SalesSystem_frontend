@@ -32,7 +32,9 @@ export class MainPage {
     if(localUser && localUser.email) {
       this.userService.findByEmail(localUser.email)
       .subscribe(response => {
-        this.userName = response['name'];
+        let name = response['name'];
+        let nickname : string[]= name.split(' ');
+        this.userName = nickname[0];
       },
       error => {
         if(error.status == 403) {
