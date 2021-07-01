@@ -1,8 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      <h3>Menu Principal</h3>
-    </ion-title>
+    <ion-title>Menu Principal</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -11,7 +9,7 @@
 
   <h1 text-center>Bem vindo, {{userName}}</h1>
 
-  <button class="align" color="tertiary" ion-button>Meus Dados</button>
+  <button class="align" color="tertiary" ion-button (click)="myProfile()">Meus Dados</button>
   <button class="align" color="tertiary" ion-button>Estoque</button>
   <button class="align" color="tertiary" ion-button>Vendas</button>
   <button class="align" color="tertiary" ion-button>Retiradas</button>

@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Meus Dados</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      <b>Dados Pessoais</b>
+    </ion-card-header>
+    <ion-item>
+      <h2>Nome: {{user?.name}}</h2>
+      <h2 class="padding">Email: {{user?.email}}</h2>
+    </ion-item>
+  </ion-card>
+  <button color="tertiary" ion-button block>Atualizar</button>
+
+  <ion-card class="padding">
+    <ion-card-header>
+      <b>Dados Bancários</b>
+    </ion-card-header>
+
+    <ion-item>
+      <h2>Saldo Total: {{user?.santanderBalance + user?.nubankBalance | currency:'BRL'}}</h2>
+    </ion-item>
+
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img src="assets/imgs/santander.png">
+      </ion-thumbnail>
+      <h2>Saldo: {{user?.santanderBalance | currency:'BRL'}}</h2>
+      <button class="padding" color="tertiary" ion-button small>Atualizar</button>
+    </ion-item>
+
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img src="assets/imgs/nubank.png">
+      </ion-thumbnail>
+      <h2 class="padding2">Saldo: {{user?.nubankBalance | currency:'BRL'}}</h2>
+      <button class="padding" color="tertiary" ion-button small>Atualizar</button>
+    </ion-item>
+    
+  </ion-card>
+</ion-content>

@@ -47,6 +47,10 @@ export class MainPage {
     }
   }
 
+  myProfile() {
+    this.navCtrl.push('ProfilePage');
+  }
+
   logout() {
     this.auth.logout();
     this.navCtrl.setRoot('HomePage');
