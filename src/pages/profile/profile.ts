@@ -22,6 +22,10 @@ export class ProfilePage {
     public storage: StorageService) {
   }
 
+  ionVieWillEnter() {
+    this.loadData();
+  }
+
   ionViewDidLoad() {
     this.loadData();
   }
@@ -35,12 +39,15 @@ export class ProfilePage {
       .subscribe(response => {
         loader.dismiss();
         this.user = response as UserDTO;
-        console.log(this.user);
       },
       error => {
         loader.dismiss();
         this.showFailureAlert();
       });
+  }
+
+  updateData(user: UserDTO) {
+    this.navCtrl.push('UpdateProfileDataPage', {user : user});
   }
 
   presentLoading() {

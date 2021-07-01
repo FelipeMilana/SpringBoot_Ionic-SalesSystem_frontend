@@ -24,4 +24,13 @@ export class UserService {
             }
         );
     }
+
+    update(obj: UserDTO, id: string) {
+        return this.http.put(`${API_CONFIG.baseURL}/users/${id}`,
+        obj,
+        {
+            observe:'response',
+            responseType:'text'
+        });
+    }
 }

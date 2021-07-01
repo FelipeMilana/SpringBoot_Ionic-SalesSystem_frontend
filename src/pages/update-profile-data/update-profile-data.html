@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Atualizar Dados</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="formGroup" (ngSubmit)="update(); $event.preventDefault()">
+    <ion-item>
+      <ion-label stacked>Nome</ion-label>
+      <ion-input formControlName="name" type="text"></ion-input>
+    </ion-item>
+    <p class="danger" *ngIf="formGroup.controls.name.dirty && formGroup.controls.name.errors" margin-left>Nome inválido</p>
+
+    <ion-item>
+      <ion-label stacked>Senha</ion-label>
+      <ion-input formControlName="password" type="password"></ion-input>
+    </ion-item>
+    <p class="danger" *ngIf="formGroup.controls.password.dirty && formGroup.controls.password.errors" margin-left>Senha inválida</p>
+ 
+    <button color="tertiary" ion-button block type="submit" [disabled]="formGroup.invalid">Atualizar</button>
+  </form>
+</ion-content>

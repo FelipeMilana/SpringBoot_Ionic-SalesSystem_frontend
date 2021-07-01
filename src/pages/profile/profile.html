@@ -9,12 +9,13 @@
     <ion-card-header>
       <b>Dados Pessoais</b>
     </ion-card-header>
+
     <ion-item>
       <h2>Nome: {{user?.name}}</h2>
       <h2 class="padding">Email: {{user?.email}}</h2>
     </ion-item>
   </ion-card>
-  <button color="tertiary" ion-button block>Atualizar</button>
+  <button color="tertiary" ion-button block (click)="updateData(user)">Atualizar</button>
 
   <ion-card class="padding">
     <ion-card-header>
@@ -40,6 +41,5 @@
       <h2 class="padding2">Saldo: {{user?.nubankBalance | currency:'BRL'}}</h2>
       <button class="padding" color="tertiary" ion-button small>Atualizar</button>
     </ion-item>
-    
   </ion-card>
 </ion-content>
