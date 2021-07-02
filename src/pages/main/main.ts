@@ -51,6 +51,10 @@ export class MainPage {
     this.navCtrl.push('ProfilePage');
   }
 
+  myWithdraws() {
+    this.navCtrl.push('WithdrawPage');
+  }
+
   logout() {
     this.auth.logout();
     this.navCtrl.setRoot('HomePage');

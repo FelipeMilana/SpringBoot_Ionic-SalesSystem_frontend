@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Minhas Retiradas</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-fab top right edge>
+    <button color="tertiary" navPush="" ion-fab mini>
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ion-list>
+    <ion-item *ngFor="let withdraw of withdraws">
+      <h2>Descrição: {{wiithdraw.name}}</h2>
+      <h2>Valor: {{withdraw.value | currency:'BRL'}}</h2>
+      <h2>Data: {{withdraw.date}}</h2>
+      <h2 *ngIf="withdraw.bank == 1">Pago por: Santander</h2>
+      <h2 *ngIf="withdraw.bank == 2">Pago por: Nubank</h2>
+    </ion-item>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
