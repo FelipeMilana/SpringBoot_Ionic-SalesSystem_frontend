@@ -31,7 +31,7 @@
         <img src="assets/imgs/santander.png">
       </ion-thumbnail>
       <h2>Saldo: {{user?.santanderBalance | currency:'BRL'}}</h2>
-      <button class="padding" color="tertiary" ion-button small>Atualizar</button>
+      <button class="padding" color="tertiary" ion-button small (click)="updateDataBankSantander()">Atualizar</button>
     </ion-item>
 
     <ion-item>
@@ -39,7 +39,7 @@
         <img src="assets/imgs/nubank.png">
       </ion-thumbnail>
       <h2 class="padding2">Saldo: {{user?.nubankBalance | currency:'BRL'}}</h2>
-      <button class="padding" color="tertiary" ion-button small>Atualizar</button>
+      <button class="padding" color="tertiary" ion-button small (click)="updateDataBankNubank()">Atualizar</button>
     </ion-item>
   </ion-card>
 </ion-content>

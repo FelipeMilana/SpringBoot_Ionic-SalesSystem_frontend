@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Atualizar Saldo</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-item *ngIf="bank == 'Santander'">
+    <h1 text-center>Saldo atual no Banco Santander: </h1>
+    <h1 text-center>{{user?.santanderBalance | currency:'BRL'}}</h1>
+    <h2 class="padding">Insira o valor que deseja adicionar</h2>
+  </ion-item>
+
+  <ion-item *ngIf="bank == 'Nubank'">
+    <h1 text-center>Saldo atual no Banco Nubank: </h1>
+    <h1 text-center>{{user?.nubankBalance | currency:'BRL'}}</h1>
+    <h2 class="padding">Insira o valor que deseja adicionar</h2>
+  </ion-item>
+
+  <form [formGroup]="formGroup" (ngSubmit)="update(); $event.preventDefault()">
+    <ion-item>
+      <ion-label fixed>Valor (R$):</ion-label>
+      <ion-input formControlName="value" type="number" placeholder="0,00"></ion-input>
+    </ion-item>
+    <p class="danger" *ngIf="formGroup.controls.value.dirty && formGroup.controls.value.errors" margin-left>Valor inválido</p>
+
+    <button color="tertiary" ion-button block type="submit" [disabled]="formGroup.invalid">Adicionar</button>
+  </form>
+</ion-content>

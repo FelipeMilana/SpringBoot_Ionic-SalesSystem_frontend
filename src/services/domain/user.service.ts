@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { API_CONFIG } from "../../configs/api.config";
+import { BalanceDTO } from "../../models/balanceDTO";
 import { UserDTO } from "../../models/userDTO";
 
 @Injectable()
@@ -32,5 +33,14 @@ export class UserService {
             observe:'response',
             responseType:'text'
         });
+    }
+
+    updateBalance(obj: BalanceDTO, id: string, bank: string) {
+        return this.http.put(`${API_CONFIG.baseURL}/users/${id}/updateBalance?bank=${bank}`,
+        obj,
+        {
+            observe:'response',
+            responseType:'text'
+        })
     }
 }
