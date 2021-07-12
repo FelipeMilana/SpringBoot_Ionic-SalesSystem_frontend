@@ -1,0 +1,121 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Dados do Veículo</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="formGroup" (ngSubmit)="insert(); $event.preventDefault()">
+
+    <ion-list class="padding" radio-group formControlName="type">
+      <ion-list-header>
+        Tipo de veículo*
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label>Carro</ion-label>
+        <ion-radio checked="true" value="1"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Moto</ion-label>
+        <ion-radio value="2"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-item>
+      <ion-label stacked>Marca*</ion-label>
+      <ion-input formControlName="brand" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Modelo*</ion-label>
+      <ion-input formControlName="model" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Versão*</ion-label>
+      <ion-input formControlName="version" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Ano de fabricação*</ion-label>
+      <ion-input formControlName="fabYear" type="number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Ano do modelo*</ion-label>
+      <ion-input formControlName="modYear" type="number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Cor*</ion-label>
+      <ion-input formControlName="color" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Motor*</ion-label>
+      <ion-input formControlName="motor" type="number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Placa do Veículo*</ion-label>
+      <ion-input formControlName="licensePlate" type="text"></ion-input>
+    </ion-item>
+    <p class="danger" *ngIf="formGroup.controls.licensePlate.dirty && formGroup.controls.licensePlate.errors" margin-left>Inválido - Deve possuir 7 caracteres</p>
+
+    <ion-item>
+      <ion-label stacked>Número do chassi*</ion-label>
+      <ion-input formControlName="chassi" type="text"></ion-input>
+    </ion-item>
+    <p class="danger" *ngIf="formGroup.controls.chassi.dirty && formGroup.controls.chassi.errors" margin-left>Inválido - Deve possuir 17 caracteres</p>
+
+    <ion-item>
+      <ion-label stacked>Número do RENAVAM*</ion-label>
+      <ion-input formControlName="renavam" type="text"></ion-input>
+    </ion-item>
+    <p class="danger" *ngIf="formGroup.controls.renavam.dirty && formGroup.controls.renavam.errors" margin-left>Inválido - Deve possuir 11 caracteres</p>
+
+    <ion-item>
+      <ion-label stacked>Descrição</ion-label>
+      <ion-input formControlName="description" type="text"></ion-input>
+    </ion-item>
+
+    <h5>Pagamento</h5>
+
+    <ion-item>
+      <ion-label stacked>Valor Pago (R$)</ion-label>
+      <ion-input formControlName="paidValue" type="number" placeholder="0,00"></ion-input>
+    </ion-item>
+
+    <ion-list class="padding" radio-group formControlName="bank">
+      <ion-list-header>
+        Escolha o banco:
+      </ion-list-header>
+
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/santander.png">
+        </ion-thumbnail>
+        <ion-label text-center>Santander</ion-label>
+        <ion-radio checked="true" value="1"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/nubank.png">
+        </ion-thumbnail>
+        <ion-label text-center>Nubank</ion-label>
+        <ion-radio value="2"></ion-radio>
+      </ion-item>
+    </ion-list>
+    
+    <ion-item>
+      <ion-label stacked>Valor de Venda (R$)</ion-label>
+      <ion-input formControlName="possibleSellValue" type="number" placeholder="0,00"></ion-input>
+    </ion-item>
+
+    <p text-center>Preencha os campos marcados com *</p>
+    <button color="tertiary" ion-button block type="submit" [disabled]="formGroup.invalid">Cadastrar</button>
+  </form>
+</ion-content>

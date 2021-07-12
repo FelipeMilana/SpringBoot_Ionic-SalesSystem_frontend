@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { API_CONFIG } from "../../configs/api.config";
+import { VehicleDTO } from "../../models/vehicleDTO";
 
 @Injectable()
 export class VehicleService {
@@ -13,5 +14,12 @@ export class VehicleService {
         return this.http.get(`${API_CONFIG.baseURL}/vehicles/stock?page=${page}&&size=${size}&&sort=${sort}&&direction=${direction}`);
     }
 
-    
+    insert(obj: VehicleDTO) {
+        return this.http.post(`${API_CONFIG.baseURL}/vehicles`,
+        obj,
+        {
+            observe:'response',
+            responseType:'text'
+        });
+    }
 }
