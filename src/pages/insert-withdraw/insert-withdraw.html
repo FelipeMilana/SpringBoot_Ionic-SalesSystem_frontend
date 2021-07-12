@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Inserir Retirada</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="formGroup" (ngSubmit)="insert(); $event.preventDefault()">
+    <ion-item>
+      <ion-label stacked>Descrição</ion-label>
+      <ion-input formControlName="name" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Valor (R$)</ion-label>
+      <ion-input formControlName="value" type="number" placeholder="0,00"></ion-input>
+    </ion-item>
+    
+    <ion-list class="padding" radio-group formControlName="bank">
+      <ion-list-header>
+        Selecione o Banco
+      </ion-list-header>
+
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/santander.png">
+        </ion-thumbnail>
+        <ion-label text-center>Santander</ion-label>
+        <ion-radio checked="true" value="1"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/nubank.png">
+        </ion-thumbnail>
+        <ion-label text-center>Nubank</ion-label>
+        <ion-radio value="2"></ion-radio>
+      </ion-item>
+    </ion-list>
+ 
+    <button color="tertiary" ion-button block type="submit" [disabled]="formGroup.invalid">Inserir</button>
+  </form>
+</ion-content>
+
