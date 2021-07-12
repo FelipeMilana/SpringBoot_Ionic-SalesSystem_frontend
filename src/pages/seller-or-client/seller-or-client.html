@@ -15,7 +15,37 @@
   </ion-toolbar>
 
   <div *ngIf="person != null">
-    
+    <ion-card>
+      <ion-card-header>
+       <b>Dados Pessoais</b>
+      </ion-card-header>
+
+      <ion-item>
+        <h2>Nome: {{person?.name}}</h2>
+        <h2 class="padding">Email: {{person?.email}}</h2>
+        <h2 class="padding">CPF: {{person?.cpf}}</h2>
+        <h2 class="padding">Telefone: {{person?.telephone}}</h2>
+        <h2 class="padding">Telefone: {{person?.telephone2}}</h2>
+      </ion-item>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <b>Endereço</b>
+      </ion-card-header>
+
+      <ion-item>
+        <h2>Rua: {{person?.address.street}}</h2>
+        <h2 class="padding">Número: {{person?.address.number}}</h2>
+        <h2 class="padding">Bairro: {{person?.address.district}}</h2>
+        <h2 class="padding">CEP: {{person?.address.postalCode}}</h2>
+        <h2 class="padding">Cidade: {{person?.address.city}}</h2>
+        <h2 class="padding">Estado: {{person?.address.state}}</h2>
+      </ion-item>
+    </ion-card>
+
+    <button margin-left color="tertiary" ion-button outline>Atualizar</button>
+    <button margin-left color="tertiary" ion-button (click)="next()">Próximo</button>
 
   </div>
 
