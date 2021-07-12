@@ -5,23 +5,46 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <ion-fab top right edge>
-    <button color="tertiary" navPush="" ion-fab mini>
+    <button color="tertiary" navPush="InsertWithdrawPage" ion-fab mini>
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>
 
-  <ion-list>
-    <ion-item *ngFor="let withdraw of withdraws">
-      <h2>Descrição: {{wiithdraw.name}}</h2>
-      <h2>Valor: {{withdraw.value | currency:'BRL'}}</h2>
-      <h2>Data: {{withdraw.date}}</h2>
-      <h2 *ngIf="withdraw.bank == 1">Pago por: Santander</h2>
-      <h2 *ngIf="withdraw.bank == 2">Pago por: Nubank</h2>
-    </ion-item>
-  </ion-list>
+  <div *ngIf="withdraws.length != 0">
+    <ion-toolbar>
+      <ion-searchbar showCancelButton="true" (search)="searchBar($event)" (ionCancel)="cancelSearchBar()"></ion-searchbar>
+    </ion-toolbar>
 
-  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
-    <ion-infinite-scroll-content></ion-infinite-scroll-content>
-  </ion-infinite-scroll>
+    <ion-list>
+      <ion-card  *ngFor="let withdraw of withdraws">
+        <ion-card-header>
+          <b>{{ withdraw?.name }}</b>
+        </ion-card-header>
+        
+        <ion-item>
+          <ion-thumbnail item-start>
+            <img *ngIf="withdraw?.bank == 1" class="imgpadding" src="assets/imgs/santander.png">
+            <img *ngIf="withdraw?.bank == 2" class="imgpadding" src="assets/imgs/nubank.png">
+          </ion-thumbnail>
+
+          <h3>Data: {{withdraw?.date}}</h3>
+          <h3>Valor: {{withdraw?.value | currency:'BRL'}}</h3>
+          <button color="tertiary" ion-button block (click)="delete(withdraw?.id)">Deletar</button>
+        </ion-item>
+      </ion-card>
+    </ion-list>
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="checkLastPage == false">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+
+  <div *ngIf="withdraws.length == 0">
+    <img src="assets/imgs/empty.png">
+  </div>
 </ion-content>
