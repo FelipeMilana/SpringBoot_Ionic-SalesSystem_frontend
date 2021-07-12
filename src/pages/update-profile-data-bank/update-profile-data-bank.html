@@ -7,13 +7,13 @@
 <ion-content padding>
 
   <ion-item *ngIf="bank == 'Santander'">
-    <h1 text-center>Saldo atual no Banco Santander: </h1>
+    <h2 text-center>Saldo atual no Banco Santander: </h2>
     <h1 text-center>{{user?.santanderBalance | currency:'BRL'}}</h1>
     <h2 class="padding">Insira o valor que deseja adicionar</h2>
   </ion-item>
 
   <ion-item *ngIf="bank == 'Nubank'">
-    <h1 text-center>Saldo atual no Banco Nubank: </h1>
+    <h2 text-center>Saldo atual no Banco Nubank: </h2>
     <h1 text-center>{{user?.nubankBalance | currency:'BRL'}}</h1>
     <h2 class="padding">Insira o valor que deseja adicionar</h2>
   </ion-item>
