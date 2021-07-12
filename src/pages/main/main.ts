@@ -51,6 +51,10 @@ export class MainPage {
     this.navCtrl.push('ProfilePage');
   }
 
+  myStock() {
+    this.navCtrl.push('StockPage');
+  }
+
   myWithdraws() {
     this.navCtrl.push('WithdrawPage');
   }

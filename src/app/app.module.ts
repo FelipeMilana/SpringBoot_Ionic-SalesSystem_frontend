@@ -12,6 +12,7 @@ import { StorageService } from '../services/storage.service';
 import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
 import { UserService } from '../services/domain/user.service';
 import { WithdrawService } from '../services/domain/withdraw.service';
+import { VehicleService } from '../services/domain/vehicle.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { WithdrawService } from '../services/domain/withdraw.service';
     ErrorInterceptorProvider,
     StorageService,
     UserService,
-    WithdrawService
+    WithdrawService,
+    VehicleService,
   ]
 })
 export class AppModule {}

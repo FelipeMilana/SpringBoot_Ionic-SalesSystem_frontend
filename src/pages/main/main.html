@@ -9,12 +9,12 @@
 
   <h1 text-center>Bem vindo, {{userName}}</h1>
 
-  <button class="align" color="tertiary" ion-button (click)="myProfile()">Meus Dados</button>
-  <button class="align" color="tertiary" ion-button>Estoque</button>
-  <button class="align" color="tertiary" ion-button>Vendas</button>
-  <button class="align" color="tertiary" ion-button (click)="myWithdraws()">Retiradas</button>
+  <button color="tertiary" ion-button block (click)="myProfile()">Meus Dados</button>
+  <button color="tertiary" ion-button block (click)="myStock()">Estoque</button>
+  <button color="tertiary" ion-button block>Vendas</button>
+  <button color="tertiary" ion-button block (click)="myWithdraws()">Retiradas</button>
 
-  <button class="align" color="dark" ion-button (click)="logout()">
+  <button color="dark" ion-button block (click)="logout()">
     <ion-icon name="log-out"></ion-icon>    
   </button>
 </ion-content>

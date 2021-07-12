@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Meu Estoque</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-fab top right edge>
+    <button color="tertiary" navPush="SellerOrClientPage" [navParams]="{personType:'seller'}" ion-fab mini>
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <div *ngIf="vehicles.length != 0">
+    <h2>Tem carro</h2>
+    <ion-list>
+      <ion-card>
+        <ion-card-header>
+        </ion-card-header>
+        
+        <ion-item>
+          <ion-thumbnail item-start>
+          </ion-thumbnail>
+        </ion-item>
+      </ion-card>
+    </ion-list>
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="checkLastPage == false">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+
+  <div *ngIf="vehicles.length == 0">
+    <img src="assets/imgs/empty.png">
+  </div>
+</ion-content>
