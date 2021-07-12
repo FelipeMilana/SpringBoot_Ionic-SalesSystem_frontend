@@ -13,6 +13,7 @@ import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
 import { UserService } from '../services/domain/user.service';
 import { WithdrawService } from '../services/domain/withdraw.service';
 import { VehicleService } from '../services/domain/vehicle.service';
+import { PersonService } from '../services/domain/person.service';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { VehicleService } from '../services/domain/vehicle.service';
     UserService,
     WithdrawService,
     VehicleService,
+    PersonService
   ]
 })
 export class AppModule {}

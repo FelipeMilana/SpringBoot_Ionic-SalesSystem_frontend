@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title *ngIf="personType == 'seller'">Dados do Vendedor</ion-title>
+    <ion-title *ngIf="personType == 'client'">Dados do Cliente</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-title>
+    Digite o CPF
+  </ion-title>
+
+  <ion-toolbar>
+    <ion-searchbar showCancelButton="true" (search)="searchBar($event)" (ionCancel)="cancelSearchBar()"></ion-searchbar>
+  </ion-toolbar>
+
+  <div *ngIf="person != null">
+    
+
+  </div>
+
+  <div *ngIf="person == null">
+    <button color="tertiary" ion-button block (click)="insert()">Adicionar</button>
+  </div>
+</ion-content>
