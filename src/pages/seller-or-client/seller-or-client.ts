@@ -39,6 +39,10 @@ export class SellerOrClientPage {
   cancelSearchBar() {
   }
 
+  insert() {
+    this.navCtrl.push('InsertSellerOrClientPage', {personType : this.personType});
+  }
+
   presentLoading() {
     let loader = this.loadingCtrl.create({
       content: 'Aguarde...',
