@@ -39,6 +39,10 @@ export class SellerOrClientPage {
   cancelSearchBar() {
   }
 
+  update() {
+    this.navCtrl.push('UpdateSellerOrClientPage', {person: this.person});
+  }
+  
   next() {
     this.navCtrl.push('InsertVehiclePage', {person: this.person});
   }
