@@ -16,17 +16,28 @@
   </ion-fab>
 
   <div *ngIf="vehicles.length != 0">
-    <h2>Tem carro</h2>
+
+    <h5>Estoque (C): {{ valueInStock | currency:'BRL' }}</h5>
+    <h5>Estoque (V): {{ sellValuesInStock | currency:'BRL' }}</h5>
+
+    <ion-toolbar>
+      <ion-searchbar showCancelButton="true" (search)="searchBar($event)" (ionCancel)="cancelSearchBar()"></ion-searchbar>
+    </ion-toolbar>
+
     <ion-list>
-      <ion-card>
-        <ion-card-header>
-        </ion-card-header>
-        
-        <ion-item>
-          <ion-thumbnail item-start>
-          </ion-thumbnail>
-        </ion-item>
-      </ion-card>
+      <button ion-item  *ngFor="let vehicle of vehicles">
+       
+
+        <ion-thumbnail item-start>
+          <b>{{ vehicle?.brand }}</b>
+          <img *ngIf="vehicle?.type == 1" class="imgpadding" src="assets/imgs/carro.png">
+          <img *ngIf="vehicle?.type == 2" class="imgpadding" src="assets/imgs/moto.png">
+        </ion-thumbnail>
+
+          <h2>{{ vehicle?.model }}, {{ vehicle?.version }}, cor  {{ vehicle?.color }}</h2>
+          <h2> Placa: {{ vehicle?.licensePlate }}</h2>
+          <b>Valor: {{vehicle?.possibleSellValue | currency:'BRL' }}</b>
+      </button>
     </ion-list>
 
     <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="checkLastPage == false">

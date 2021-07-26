@@ -13,6 +13,10 @@ export class StockPage {
   vehicles: VehicleDTO[] = [];
   page: number = 0;
   checkLastPage: boolean = false;
+  valueInStock: number;
+  sellValuesInStock: number;
+  checkSearchBar: boolean = false;
+  search: string = '';
 
   constructor(
     public navCtrl: NavController, 
@@ -37,16 +41,70 @@ export class StockPage {
         if(response['last']) {
           this.checkLastPage = true;
         }
+
+        this.valueInStock = 0;
+        this.sellValuesInStock = 0;
+        for(var i=0; i<this.vehicles.length; i++) {
+          
+          let totalExpenses = 0;
+          for(var j=0; j<this.vehicles[i].expenses.length; j++) {
+            totalExpenses = totalExpenses + this.vehicles[i].expenses[j].value;
+          }
+
+          this.valueInStock = this.valueInStock +  this.vehicles[i].paidValue + totalExpenses;
+          this.sellValuesInStock = this.sellValuesInStock + this.vehicles[i].possibleSellValue;
+        }
+        return this.valueInStock;
       },
       error => {
         loader.dismiss();
       });
   }
 
+  findByModelOrLicensePlate(str: string) {
+    let loader = this.presentLoading();
+
+    this.vehicleService.findByModelOrLicensePlate(this.page, 10, "brand", "ASC", str)
+      .subscribe(response => {
+        loader.dismiss();
+        this.vehicles = this.vehicles.concat(response['content'] as VehicleDTO);
+
+        if(this.vehicles.length == 0) {
+          this.showFailedSearchBar();
+        }
+
+        if(response['last']) {
+          this.checkLastPage = true;
+        }
+      },
+      error => {
+        loader.dismiss();
+      });
+  }
+
+  searchBar(event){
+    this.page = 0;
+    this.vehicles = [];
+    this.checkLastPage = false;
+    this.checkSearchBar = true;
+    this.search = event.target.value;
+    
+    this.findByModelOrLicensePlate(this.search);
+  }
+
+  cancelSearchBar() {
+    this.page = 0;
+    this.vehicles = [];
+    this.checkLastPage = false;
+    this.checkSearchBar = false;
+    this.loadData();
+  }
+
   doRefresh(refresher) {
     this.page = 0;
     this.vehicles = [];
     this.checkLastPage = false;
+    this.checkSearchBar = false;
     this.loadData();
     
     setTimeout(() => {
@@ -56,8 +114,14 @@ export class StockPage {
 
   doInfinite(infiniteScroll) {
     this.page++;
-    this.loadData();
 
+    if(this.checkSearchBar) {
+      this.findByModelOrLicensePlate(this.search);
+    }
+    else{
+      this.loadData();
+    }
+    
     setTimeout(() => {
       infiniteScroll.complete();
     }, 1000);
@@ -69,5 +133,22 @@ export class StockPage {
     });
     loader.present();
     return loader;
+  }
+
+  showFailedSearchBar() {
+    let alert = this.alertCtrl.create({
+      title: 'Alerta',
+      message: 'Não há veículos',
+      enableBackdropDismiss: false,
+      buttons: [
+        {
+          text: 'Ok',
+          handler: () => {
+            this.cancelSearchBar();
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 }
