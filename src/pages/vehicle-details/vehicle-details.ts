@@ -26,6 +26,10 @@ export class VehicleDetailsPage {
       this.vehicleId = this.navParams.get('vehicleId');
   }
 
+  ionViewWillEnter() {
+    this.loadData();
+  }
+  
   ionViewDidLoad() {
     this.loadData();
   }
@@ -50,6 +54,10 @@ export class VehicleDetailsPage {
       error => {
         loader.dismiss();
       });
+  }
+
+  updateVehicle() {
+    this.navCtrl.push('UpdateVehiclePage', {vehicle: this.vehicle});
   }
 
   presentLoading() {

@@ -30,4 +30,13 @@ export class VehicleService {
             responseType:'text'
         });
     }
+
+    update(obj: VehicleDTO, id: string) {
+        return this.http.put(`${API_CONFIG.baseURL}/vehicles/${id}`,
+        obj,
+        {
+            observe:'response',
+            responseType:'text'
+        });
+    }
 }
