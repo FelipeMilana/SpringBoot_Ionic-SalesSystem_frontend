@@ -82,6 +82,10 @@ export class StockPage {
       });
   }
 
+  showDetails(id: string) {
+    this.navCtrl.push('VehicleDetailsPage', {vehicleId: id});
+  }
+
   searchBar(event){
     this.page = 0;
     this.vehicles = [];

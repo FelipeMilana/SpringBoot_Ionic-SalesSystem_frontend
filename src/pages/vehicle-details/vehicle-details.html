@@ -1,0 +1,112 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Dados do Veículo</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-item>
+      <h2 class="padding" text-center><strong>Veículo</strong></h2>
+      <h2 class="padding"><strong>Marca: </strong> {{ vehicle?.brand }}</h2>
+      <h2 class="padding"><strong>Modelo: </strong> {{ vehicle?.model }}</h2>
+      <h2 class="padding"><strong>Versão:</strong> {{ vehicle?.version }}</h2>
+      <h2 class="padding"><strong>Ano de fabricação: </strong> {{ vehicle?.fabYear }}</h2>
+      <h2 class="padding"><strong>Ano do modelo: </strong> {{ vehicle?.modYear }}</h2>
+      <h2 class="padding"><strong>Cor: </strong> {{ vehicle?.color }}</h2>
+      <h2 class="padding"><strong>Motor: </strong> {{ vehicle?.motor }}</h2>
+      
+
+      <h2 class="padding"><strong>Placa do Véiculo:</strong></h2>
+      <h2 class>{{ vehicle?.licensePlate }}</h2>
+
+      <h2 class="padding"><strong>Número do Chassi:</strong></h2>
+      <h2 class>{{ vehicle?.chassi }}</h2>
+      
+      <h2 class="padding"><strong>Número do RENAVAM:</strong></h2>
+      <h2 class>{{ vehicle?.renavam }}</h2>
+      
+      <ion-item class="padding">
+        <ion-thumbnail item-start>
+          <img *ngIf="vehicle?.bank == 1" src="assets/imgs/santander.png">
+          <img *ngIf="vehicle?.bank == 2" src="assets/imgs/nubank.png">
+        </ion-thumbnail>
+        <h2 class="padding"><strong>Valor Pago:</strong></h2>
+        <h2 class>{{ vehicle?.paidValue | currency: 'BRL' }}</h2>
+      </ion-item>
+      
+
+      <h2 class="padding"><strong>Descrição:</strong></h2>
+
+      <div *ngIf="vehicle?.description == ''">
+        <h2>Não consta</h2>
+      </div>
+
+      <div *ngIf="vehicle?.description != ''">
+        <ion-list *ngFor="let description of descriptions">
+          <h2>{{ description }}</h2>
+        </ion-list>
+      </div>
+
+      <h2 class="padding"><strong>Despesas:</strong></h2>
+      
+      <div *ngIf="vehicle?.expenses.length == 0">
+        <h2>Não consta</h2>
+      </div>
+          
+      <div *ngIf="vehicle?.expenses.length != 0">
+        <ion-item *ngFor="let expense of vehicle?.expenses">
+          <ion-thumbnail item-start>
+            <img *ngIf="expense?.bank == 1" src="assets/imgs/santander.png">
+            <img *ngIf="expense?.bank == 2" src="assets/imgs/nubank.png">
+          </ion-thumbnail>
+          <h2 class="padding"><strong>Descrição: </strong> {{expense?.name }}</h2>
+          <h2 class="padding"><strong>Data:</strong> {{ expense?.date }}</h2>
+          <h2 class="padding"><strong>Valor </strong> {{ expense?.value | currency:'BRL' }}</h2>
+          <button color="tertiary" ion-button block>Deletar</button>
+        </ion-item>
+
+        <h2 class="padding"><strong>Despesas totais: </strong>{{ totalExpenses | currency: 'BRL' }}</h2>
+      </div>
+    
+      <button color="tertiary" ion-button small>Adicionar</button>
+      
+      <h2 class="padding"><strong>Valor Pago + Despesas totais: </strong></h2>
+      <h2 class>{{ totalSpend | currency: 'BRL' }}</h2>
+
+      <h2 class="padding"><strong>Valor de venda: </strong></h2>
+      <h2 class>{{ vehicle?.possibleSellValue | currency: 'BRL' }}</h2>
+
+      <h3 class="padding"><strong>Adicionado em: </strong> {{ vehicle?.date }}</h3>
+    </ion-item>
+  </ion-card>
+
+  <button color="tertiary" ion-button outline block>Atualizar</button>
+
+ 
+  <ion-card class="cardpad">
+    <ion-card-header>
+      <h2><strong>Dados do Vendedor</strong></h2>
+    </ion-card-header>
+  
+    <ion-item>
+      <h2><strong>Nome: </strong> {{ vehicle?.seller.name }}</h2>
+      <h2 class="padding"><strong>Email: </strong> {{ vehicle?.seller.email }}</h2>
+      <h2 class="padding"><strong>CPF:</strong> {{ vehicle?.seller.cpf }}</h2>
+      <h2 class="padding"><strong>Telefone: </strong> {{ vehicle?.seller.telephone }}</h2>
+      <h2 class="padding"><strong>Telefone: </strong> {{ vehicle?.seller.telephone2 }}</h2>
+
+      <h2 class="padding" text-center><strong>Endereço</strong></h2>
+      <h2 class="padding"><strong>Rua: </strong> {{ vehicle?.seller.address.street }}</h2>
+      <h2 class="padding"><strong>Número: </strong> {{ vehicle?.seller.address.number }}</h2>
+      <h2 class="padding"><strong>Bairro: </strong> {{ vehicle?.seller.address.district }}</h2>
+      <h2 class="padding"><strong>CEP: </strong> {{ vehicle?.seller.address.postalCode }}</h2>
+      <h2 class="padding"><strong>Cidade: </strong> {{ vehicle?.seller.address.city }}</h2>
+      <h2 class="padding"><strong>Estado: </strong> {{ vehicle?.seller.address.state }}</h2>
+    </ion-item>
+  </ion-card>
+
+  <button color="tertiary" ion-button block>Realizar venda</button>
+  <button color="tertiary" ion-button outline block>Deletar do estoque</button>
+
+</ion-content>

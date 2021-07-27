@@ -18,6 +18,10 @@ export class VehicleService {
         return this.http.get(`${API_CONFIG.baseURL}/vehicles/modelOrLicensePlate?value=${str}&&page=${page}&&size=${size}&&sort=${sort}&&direction=${direction}`)
     }
 
+    findById(id: string) {
+        return this.http.get(`${API_CONFIG.baseURL}/vehicles/${id}`);
+    }
+    
     insert(obj: VehicleDTO) {
         return this.http.post(`${API_CONFIG.baseURL}/vehicles`,
         obj,

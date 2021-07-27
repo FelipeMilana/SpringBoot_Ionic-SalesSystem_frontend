@@ -25,7 +25,7 @@
     </ion-toolbar>
 
     <ion-list>
-      <button ion-item  *ngFor="let vehicle of vehicles">
+      <button ion-item  *ngFor="let vehicle of vehicles" (click)="showDetails(vehicle.id)">
        
 
         <ion-thumbnail item-start>
