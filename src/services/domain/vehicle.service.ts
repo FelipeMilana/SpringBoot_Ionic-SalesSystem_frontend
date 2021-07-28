@@ -39,4 +39,12 @@ export class VehicleService {
             responseType:'text'
         });
     }
+
+    delete(id: string) {
+        return this.http.delete(`${API_CONFIG.baseURL}/vehicles/${id}`,
+        {
+            observe:'response',
+            responseType:'text'
+        });
+    }
 }

@@ -60,11 +60,57 @@ export class VehicleDetailsPage {
     this.navCtrl.push('UpdateVehiclePage', {vehicle: this.vehicle});
   }
 
+  delete(id: string) {
+    let alert = this.alertCtrl.create({
+      title:'Aviso',
+      message:'Deseja deletar esse veículo do estoque?',
+      enableBackdropDismiss: false,
+      buttons: [
+        {
+          text:'Ok',
+          handler: () => {
+            let loader = this.presentLoading();
+
+            this.vehicleService.delete(id)
+              .subscribe(response => {
+                loader.dismiss();
+                this.showSuccessfulAlert();
+              },
+              error => {
+                loader.dismiss();
+              });
+          }
+        },
+        {
+          text:'Cancelar'
+        }
+      ]
+    });
+    alert.present();
+  }
+
   presentLoading() {
     let loader = this.loadingCtrl.create({
       content: 'Aguarde...',
     });
     loader.present();
     return loader;
+  }
+
+ showSuccessfulAlert() {
+    let alert = this.alertCtrl.create({
+      title:'Sucesso',
+      message:'Veículo deletado!',
+      enableBackdropDismiss: false,
+      buttons:[
+        {
+          text:'Ok',
+          handler: () => {
+            this.navCtrl.pop();
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 }
