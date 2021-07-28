@@ -63,7 +63,7 @@
           <h2 class="padding"><strong>{{expense?.name }}</strong></h2>
           <h3>{{ expense?.date }}</h3>
           <h2>Valor: {{ expense?.value | currency:'BRL' }}</h2>
-          <button color="tertiary" ion-button>Deletar</button>
+          <button color="tertiary" ion-button (click)="deleteExpense(expense.id)">Deletar</button>
         </ion-item>
 
         <h2 class="padding"><strong>Despesas totais: </strong>{{ totalExpenses | currency: 'BRL' }}</h2>

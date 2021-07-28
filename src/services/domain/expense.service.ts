@@ -18,4 +18,12 @@ export class ExpenseService {
             responseType:'text'
         });
     }
+
+    delete(id: string) {
+        return this.http.delete(`${API_CONFIG.baseURL}/expenses/${id}`,
+        {
+            observe:'response',
+            responseType:'text'
+        });
+    }
 }
