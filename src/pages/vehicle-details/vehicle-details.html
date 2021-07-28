@@ -60,16 +60,16 @@
             <img *ngIf="expense?.bank == 1" src="assets/imgs/santander.png">
             <img *ngIf="expense?.bank == 2" src="assets/imgs/nubank.png">
           </ion-thumbnail>
-          <h2 class="padding"><strong>Descrição: </strong> {{expense?.name }}</h2>
-          <h2 class="padding"><strong>Data:</strong> {{ expense?.date }}</h2>
-          <h2 class="padding"><strong>Valor </strong> {{ expense?.value | currency:'BRL' }}</h2>
-          <button color="tertiary" ion-button block>Deletar</button>
+          <h2 class="padding"><strong>{{expense?.name }}</strong></h2>
+          <h3>{{ expense?.date }}</h3>
+          <h2>Valor: {{ expense?.value | currency:'BRL' }}</h2>
+          <button color="tertiary" ion-button>Deletar</button>
         </ion-item>
 
         <h2 class="padding"><strong>Despesas totais: </strong>{{ totalExpenses | currency: 'BRL' }}</h2>
       </div>
     
-      <button color="tertiary" ion-button small>Adicionar</button>
+      <button color="tertiary" ion-button small (click)="addExpense(vehicle.id)">Adicionar</button>
       
       <h2 class="padding"><strong>Valor Pago + Despesas totais: </strong></h2>
       <h2 class>{{ totalSpend | currency: 'BRL' }}</h2>

@@ -13,8 +13,8 @@ export class VehicleDetailsPage {
   vehicleId: string;
   vehicle: VehicleDTO;
   descriptions: String[] = [];
-  totalSpend: number = 0;
-  totalExpenses:number = 0;
+  totalSpend: number;
+  totalExpenses:number;
 
   constructor(
     public navCtrl: NavController, 
@@ -45,6 +45,9 @@ export class VehicleDetailsPage {
         let description = response['description'];
         this.descriptions = description.split(',');
 
+        this.totalSpend = 0;
+        this.totalExpenses = 0;
+        
         for(var i=0; i<this.vehicle.expenses.length; i++) {
           this.totalExpenses = this.totalExpenses + this.vehicle.expenses[i].value;
         }
@@ -58,6 +61,10 @@ export class VehicleDetailsPage {
 
   updateVehicle() {
     this.navCtrl.push('UpdateVehiclePage', {vehicle: this.vehicle});
+  }
+
+  addExpense(id: string) {
+    this.navCtrl.push('InsertExpensePage', {vehicleId: id});
   }
 
   delete(id: string) {
