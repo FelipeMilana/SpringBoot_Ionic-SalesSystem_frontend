@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Minhas Vendas</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div *ngIf="sales.length != 0">
+    <h2>Tem venda</h2>
+  </div>
+
+  <div *ngIf="sales.length == 0">
+    <img src="assets/imgs/empty.png">
+  </div>
+</ion-content>
+

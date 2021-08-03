@@ -15,6 +15,7 @@ import { WithdrawService } from '../services/domain/withdraw.service';
 import { VehicleService } from '../services/domain/vehicle.service';
 import { PersonService } from '../services/domain/person.service';
 import { ExpenseService } from '../services/domain/expense.service';
+import { SaleService } from '../services/domain/sale.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ExpenseService } from '../services/domain/expense.service';
     WithdrawService,
     VehicleService,
     PersonService,
-    ExpenseService
+    ExpenseService,
+    SaleService
   ]
 })
 export class AppModule {}
