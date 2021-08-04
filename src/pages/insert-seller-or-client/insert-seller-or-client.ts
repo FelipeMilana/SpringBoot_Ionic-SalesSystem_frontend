@@ -10,6 +10,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class InsertSellerOrClientPage {
 
   personType: string;
+  vehicleId: string;
   formGroup: FormGroup;
 
   constructor(
@@ -18,6 +19,7 @@ export class InsertSellerOrClientPage {
     public formBuilder: FormBuilder) {
 
       this.personType = this.navParams.get('personType');
+      this.vehicleId = this.navParams.get('vehicleId');
 
       this.formGroup = this.formBuilder.group({
         id:[null, []],
@@ -39,6 +41,11 @@ export class InsertSellerOrClientPage {
   }
 
   insert() {
-    this.navCtrl.push('InsertVehiclePage', {person: this.formGroup.value});
+    if(this.personType == 'seller') {
+      this.navCtrl.push('InsertVehiclePage', {person: this.formGroup.value});
+    }
+    else{
+      this.navCtrl.push('SaleDataPage', {person: this.formGroup.value, vehicleId: this.vehicleId});
+    }
   }
 }
