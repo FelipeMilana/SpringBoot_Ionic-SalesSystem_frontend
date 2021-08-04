@@ -98,6 +98,10 @@ export class VehicleDetailsPage {
     alert.present();
   }
 
+  sell(id: string) {
+    this.navCtrl.push('SellerOrClientPage', {personType: 'client', vehicleId: id});
+  }
+
   delete(id: string) {
     let alert = this.alertCtrl.create({
       title:'Aviso',

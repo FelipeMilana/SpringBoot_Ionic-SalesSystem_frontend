@@ -21,11 +21,11 @@
       </ion-card-header>
 
       <ion-item>
-        <h2>Nome: {{person?.name}}</h2>
-        <h2 class="padding">Email: {{person?.email}}</h2>
-        <h2 class="padding">CPF: {{person?.cpf}}</h2>
-        <h2 class="padding">Telefone: {{person?.telephone}}</h2>
-        <h2 class="padding">Telefone: {{person?.telephone2}}</h2>
+        <h2><strong>Nome: </strong> {{person?.name}}</h2>
+        <h2 class="padding"><strong>Email: </strong> {{person?.email}}</h2>
+        <h2 class="padding"><strong>CPF: </strong> {{person?.cpf}}</h2>
+        <h2 class="padding"><strong>Telefone: </strong> {{person?.telephone}}</h2>
+        <h2 class="padding"><strong>Telefone: </strong> {{person?.telephone2}}</h2>
       </ion-item>
     </ion-card>
 
@@ -35,18 +35,17 @@
       </ion-card-header>
 
       <ion-item>
-        <h2>Rua: {{person?.address.street}}</h2>
-        <h2 class="padding">Número: {{person?.address.number}}</h2>
-        <h2 class="padding">Bairro: {{person?.address.district}}</h2>
-        <h2 class="padding">CEP: {{person?.address.postalCode}}</h2>
-        <h2 class="padding">Cidade: {{person?.address.city}}</h2>
-        <h2 class="padding">Estado: {{person?.address.state}}</h2>
+        <h2><strong>Rua: </strong> {{person?.address.street}}</h2>
+        <h2 class="padding"><strong>Número: </strong> {{person?.address.number}}</h2>
+        <h2 class="padding"><strong>Bairro: </strong> {{person?.address.district}}</h2>
+        <h2 class="padding"><strong>CEP: </strong> {{person?.address.postalCode}}</h2>
+        <h2 class="padding"><strong>Cidade: </strong> {{person?.address.city}}</h2>
+        <h2 class="padding"><strong>Estado: </strong> {{person?.address.state}}</h2>
       </ion-item>
     </ion-card>
 
     <button margin-left color="tertiary" ion-button outline (click)="update()">Atualizar</button>
     <button margin-left color="tertiary" ion-button (click)="next()">Próximo</button>
-
   </div>
 
   <div *ngIf="person == null">

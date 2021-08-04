@@ -12,6 +12,7 @@ export class SellerOrClientPage {
 
   person: PersonDTO;
   personType: string;
+  vehicleId: string;
 
   constructor(
     public navCtrl: NavController, 
@@ -21,6 +22,8 @@ export class SellerOrClientPage {
     public personService: PersonService) {
 
       this.personType = this.navParams.get('personType');
+      this.vehicleId = this.navParams.get('vehicleId');
+
   }
 
   searchBar(event) {
@@ -44,11 +47,21 @@ export class SellerOrClientPage {
   }
   
   next() {
-    this.navCtrl.push('InsertVehiclePage', {person: this.person});
+    if(this.personType == 'seller') {
+      this.navCtrl.push('InsertVehiclePage', {person: this.person});
+    }
+    else{
+      this.navCtrl.push('SaleDataPage', {person: this.person, vehicleId: this.vehicleId});
+    }
   }
-
+  
   insert() {
-    this.navCtrl.push('InsertSellerOrClientPage', {personType : this.personType});
+    if(this.personType == 'seller') {
+      this.navCtrl.push('InsertSellerOrClientPage', {personType : this.personType});
+    }
+    else{
+      this.navCtrl.push('InsertSellerOrClientPage', {personType : this.personType, vehicleId: this.vehicleId});
+    }
   }
 
   presentLoading() {

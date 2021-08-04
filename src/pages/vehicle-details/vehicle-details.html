@@ -106,7 +106,7 @@
     </ion-item>
   </ion-card>
 
-  <button color="tertiary" ion-button block>Realizar venda</button>
+  <button color="tertiary" ion-button block (click)="sell(vehicle.id)">Realizar venda</button>
   <button color="tertiary" ion-button outline block (click)="delete(vehicle.id)">Deletar do estoque</button>
 
 </ion-content>
