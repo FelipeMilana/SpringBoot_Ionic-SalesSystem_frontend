@@ -1,13 +1,7 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PersonDTO } from '../../models/personDTO';
-
-/**
- * Generated class for the SaleDataPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -18,18 +12,29 @@ export class SaleDataPage {
 
   person: PersonDTO;
   vehicleId: string;
+  formGroup: FormGroup;
 
   constructor(
     public navCtrl: NavController, 
-    public navParams: NavParams) {
+    public navParams: NavParams,
+    public formBuilder: FormBuilder) {
 
       this.person = this.navParams.get('person');
       this.vehicleId = this.navParams.get('vehicleId');
+
+      this.formGroup = this.formBuilder.group({
+        finalValue: ['', [Validators.required]],
+        type: ['', Validators.required]
+      });
   }
 
-  ionViewDidLoad() {
-    console.log(this.person);
-    console.log(this.vehicleId);
+  next() {
+    if(this.formGroup.controls.type.value == 1) {
+      this.navCtrl.push('InsertExchangeVehiclePage', {person: this.person, vehicleId: this.vehicleId, finalValue: this.formGroup.controls.finalValue.value});
+    }
+    else{
+      this.navCtrl.push('PaymentMethodPage', {person: this.person, vehicleId: this.vehicleId, finalValue: this.formGroup.controls.finalValue.value});
+    }
   }
 
 }
