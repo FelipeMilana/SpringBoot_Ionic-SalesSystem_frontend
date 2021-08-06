@@ -1,15 +1,200 @@
-<!--
-  Generated template for the PaymentMethodPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar>
-    <ion-title>PaymentMethod</ion-title>
+    <ion-title>Método de Pagamento</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+  <ion-item>
+    <h2 class="padding"><strong>Valor de venda: </strong> {{ finalValue | currency:'BRL' }}</h2>
+  </ion-item>
 
+  <div *ngIf="exchangeVehicle != null">
+    <ion-item>
+      <h2 class="padding"><strong>Valor do veículo: </strong> {{ exchangeVehicle?.paidValue | currency:'BRL' }}</h2>
+      <h2 class="padding"><strong>Restante: </strong> {{ finalValue - exchangeVehicle?.paidValue | currency:'BRL' }}</h2>
+    </ion-item>
+  </div>
+  
+  <form [formGroup]="formGroup" (ngSubmit)="insert(); $event.preventDefault()">
+
+    <ion-list *ngIf="exchangeVehicle == null" class="padding" radio-group formControlName="@type">
+      <ion-list-header>
+        Forma de Pagamento
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label>À Vista</ion-label>
+        <ion-radio value="pagamentoÀVista"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Financiamento</ion-label>
+        <ion-radio value="pagamentoFinanciado"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Consórcio</ion-label>
+        <ion-radio value="pagamentoPorConsórcio"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngIf="exchangeVehicle != null" class="padding" radio-group formControlName="@type">
+      <ion-list-header>
+        Forma de Pagamento
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label>À Vista</ion-label>
+        <ion-radio value="pagamentoÀVistaComTroca"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Financiamento</ion-label>
+        <ion-radio value="pagamentoFinanciadoComTroca"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Consórcio</ion-label>
+        <ion-radio value="pagamentoPorConsórcioComTroca"></ion-radio>
+      </ion-item>
+    </ion-list>
+    
+    <ion-item *ngIf="formGroup.value['@type'] == 'pagamentoÀVistaComTroca'">
+      <ion-label stacked>Valor (R$)*:</ion-label>
+      <ion-input formControlName="cashValue" type="number" placeholder="0,00"></ion-input>
+    </ion-item>
+
+    <ion-list *ngIf="formGroup.value['@type'] == 'pagamentoÀVista' || formGroup.value['@type'] == 'pagamentoÀVistaComTroca'" class="padding" radio-group formControlName="bank">
+      <ion-list-header>
+        Escolha o banco:
+      </ion-list-header>
+
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/santander.png">
+        </ion-thumbnail>
+        <ion-label text-center>Santander</ion-label>
+        <ion-radio value="1"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/nubank.png">
+        </ion-thumbnail>
+        <ion-label text-center>Nubank</ion-label>
+        <ion-radio value="2"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-item *ngIf="formGroup.value['@type'] != 'pagamentoÀVista' && formGroup.value['@type'] != 'pagamentoÀVistaComTroca' && formGroup.value['@type'] != ''">
+      <ion-label stacked>Nome*:</ion-label>
+      <ion-input formControlName="name" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="formGroup.value['@type'] != 'pagamentoÀVista' && formGroup.value['@type'] != 'pagamentoÀVistaComTroca' && formGroup.value['@type'] != ''">
+      <ion-label stacked>CNPJ*:</ion-label>
+      <ion-input formControlName="cnpj" type="number"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="formGroup.value['@type'] != 'pagamentoÀVista' && formGroup.value['@type'] != 'pagamentoÀVistaComTroca' && formGroup.value['@type'] != ''">
+      <ion-label stacked>Telefone*:</ion-label>
+      <ion-input formControlName="telephone" type="number"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="formGroup.value['@type'] == 'pagamentoPorConsórcio' || formGroup.value['@type'] == 'pagamentoPorConsórcioComTroca' ">
+      <ion-label stacked>Cota*:</ion-label>
+      <ion-input formControlName="quota" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="formGroup.value['@type'] == 'pagamentoPorConsórcio' || formGroup.value['@type'] == 'pagamentoPorConsórcioComTroca'">
+      <ion-label stacked>Grupo*:</ion-label>
+      <ion-input formControlName="group" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="formGroup.value['@type'] != 'pagamentoÀVista' && formGroup.value['@type'] != 'pagamentoÀVistaComTroca' && formGroup.value['@type'] != ''">
+      <ion-label stacked>Valor de entrada (R$)*:</ion-label>
+      <ion-input formControlName="inputValue" type="number" placeholder="0,00"></ion-input>
+    </ion-item>
+
+    <ion-list *ngIf="formGroup.value['@type'] != 'pagamentoÀVista' && formGroup.value['@type'] != 'pagamentoÀVistaComTroca' && formGroup.value['@type'] != ''" class="padding" radio-group formControlName="inputBank">
+      <ion-list-header>
+        Escolha o banco para o valor de entrada:
+      </ion-list-header>
+
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/santander.png">
+        </ion-thumbnail>
+        <ion-label text-center>Santander</ion-label>
+        <ion-radio value="1"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/nubank.png">
+        </ion-thumbnail>
+        <ion-label text-center>Nubank</ion-label>
+        <ion-radio value="2"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-item *ngIf="formGroup.value['@type'] == 'pagamentoFinanciado' || formGroup.value['@type'] == 'pagamentoFinanciadoComTroca'">
+      <ion-label stacked>Valor Financiado (R$)*:</ion-label>
+      <ion-input formControlName="fundedValue" type="number" placeholder="0,00"></ion-input>
+    </ion-item>
+
+    <ion-list *ngIf="formGroup.value['@type'] == 'pagamentoFinanciado' || formGroup.value['@type'] == 'pagamentoFinanciadoComTroca'" class="padding" radio-group formControlName="fundedBank">
+      <ion-list-header>
+        Escolha o banco para o valor financiado:
+      </ion-list-header>
+
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/santander.png">
+        </ion-thumbnail>
+        <ion-label text-center>Santander</ion-label>
+        <ion-radio value="1"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/nubank.png">
+        </ion-thumbnail>
+        <ion-label text-center>Nubank</ion-label>
+        <ion-radio value="2"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-item *ngIf="formGroup.value['@type'] == 'pagamentoPorConsórcio' || formGroup.value['@type'] == 'pagamentoPorConsórcioComTroca'">
+      <ion-label stacked>Valor do Consórcio (R$)*:</ion-label>
+      <ion-input formControlName="consortiumValue" type="number" placeholder="0,00"></ion-input>
+    </ion-item>
+
+    <ion-list *ngIf="formGroup.value['@type'] == 'pagamentoPorConsórcio' || formGroup.value['@type'] == 'pagamentoPorConsórcioComTroca'" class="padding" radio-group formControlName="consortiumBank">
+      <ion-list-header>
+        Escolha o banco para o valor do consórcio:
+      </ion-list-header>
+
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/santander.png">
+        </ion-thumbnail>
+        <ion-label text-center>Santander</ion-label>
+        <ion-radio value="1"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/nubank.png">
+        </ion-thumbnail>
+        <ion-label text-center>Nubank</ion-label>
+        <ion-radio value="2"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <p *ngIf="formGroup.value['@type'] != '' && formGroup.value['@type'] != 'pagamentoÀVista'" text-center>Preencha os campos marcados com *</p>
+    
+    <button color="tertiary" ion-button block type="submit" [disabled]="formGroup.invalid">Vender</button>
+  </form>
 </ion-content>

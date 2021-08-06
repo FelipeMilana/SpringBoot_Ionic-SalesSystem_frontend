@@ -10,7 +10,6 @@
     <h2 class="padding"><strong>Valor de venda: </strong> {{ finalValue | currency:'BRL' }}</h2>
     <h2 class="padding"><strong>Valor do veículo: </strong> {{ exchangeVehicle?.paidValue | currency:'BRL' }}</h2>
     <h2 class="padding"><strong>Troco: </strong> {{ exchangeVehicle?.paidValue - finalValue | currency:'BRL' }}</h2>
-
   </ion-item>
 
   <form [formGroup]="formGroup" (ngSubmit)="insert(); $event.preventDefault()">
