@@ -9,8 +9,42 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
+  <ion-fab top right edge>
+    <button color="tertiary" navPush="" ion-fab mini>
+     <ion-icon name="document"></ion-icon>
+    </button>
+  </ion-fab>
+
+
   <div *ngIf="sales.length != 0">
-    <h2>Tem venda</h2>
+    <h5>Lucro Total: {{ totalProfit | currency:'BRL' }}</h5>
+    <h5>Ticket Médio: {{ ticketValue | currency:'BRL' }}</h5>
+
+    <ion-toolbar>
+      <ion-searchbar showCancelButton="true" (search)="searchBar($event)" (ionCancel)="cancelSearchBar()"></ion-searchbar>
+    </ion-toolbar>
+
+    <ion-list>
+      <button ion-item  *ngFor="let sale of sales" (click)="showDetails(sale.id)">
+       
+        <ion-thumbnail item-start>
+          <h2 text-center> <strong>{{ sale?.vehicle.brand }}</strong></h2>
+          <img *ngIf="sale?.vehicle.type == 1" class="imgpadding" src="assets/imgs/carro.png">
+          <img *ngIf="sale?.vehicle.type == 2" class="imgpadding" src="assets/imgs/moto.png">
+        </ion-thumbnail>
+
+          <h2>{{ sale?.vehicle.model }}, {{ sale?.vehicle.version }}, {{ sale?.vehicle.color }}</h2>
+          <h2><strong>Ano: </strong> {{ sale?.vehicle.modYear }}</h2>
+          <h2> <strong>Placa: </strong> {{ sale?.vehicle.licensePlate }}</h2>
+          <h2> <strong>Data: </strong> {{ sale?.date }}</h2>
+          <h2><strong>Venda: </strong> {{ sale?.finalValue | currency:'BRL' }}</h2>
+          <h2><strong>Lucro: </strong> <h2 class="green">{{ sale?.profit | currency:'BRL' }}</h2></h2>
+      </button>
+    </ion-list>
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="checkLastPage == false">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
   </div>
 
   <div *ngIf="sales.length == 0">
