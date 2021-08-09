@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Relatório de Vendas</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <h4 text-center>Defina as datas de início e fim para gerar o relatório</h>
+
+  <form [formGroup]="formGroup" (ngSubmit)="next(); $event.preventDefault()">
+
+    <ion-item>
+      <ion-label stacked>Início*</ion-label>
+      <ion-input formControlName="startDate" type="text" placeholder="dd/MM/AAAA"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Fim*</ion-label>
+      <ion-input formControlName="endDate" type="text" placeholder="dd/MM/AAAA"></ion-input>
+    </ion-item>
+
+    <p text-center>Preencha os campos marcados com *</p>
+    <button color="tertiary" ion-button block type="submit" [disabled]="formGroup.invalid">Próximo</button>
+  </form>
+</ion-content>
