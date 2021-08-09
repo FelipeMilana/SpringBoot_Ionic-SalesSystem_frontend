@@ -1,15 +1,300 @@
-<!--
-  Generated template for the SaleDetailsPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar>
-    <ion-title>SaleDetails</ion-title>
+    <ion-title>Dados da Venda</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+  <ion-card>
+    <ion-item>
+      <h2 class="padding" text-center><strong>Veículo</strong></h2>
+      <h2 class="padding"><strong>Marca: </strong> {{ sale?.vehicle.brand }}</h2>
+      <h2 class="padding"><strong>Modelo: </strong> {{ sale?.vehicle.model }}</h2>
+      <h2 class="padding"><strong>Versão:</strong> {{ sale?.vehicle.version }}</h2>
+      <h2 class="padding"><strong>Ano de fabricação: </strong> {{ sale?.vehicle.fabYear }}</h2>
+      <h2 class="padding"><strong>Ano do modelo: </strong> {{ sale?.vehicle.modYear }}</h2>
+      <h2 class="padding"><strong>Cor: </strong> {{ sale?.vehicle.color }}</h2>
+      <h2 class="padding"><strong>Motor: </strong> {{ sale?.vehicle.motor }}</h2>
+      
 
+      <h2 class="padding"><strong>Placa do Véiculo:</strong></h2>
+      <h2>{{ sale?.vehicle.licensePlate }}</h2>
+
+      <h2 class="padding"><strong>Número do Chassi:</strong></h2>
+      <h2>{{ sale?.vehicle.chassi }}</h2>
+      
+      <h2 class="padding"><strong>Número do RENAVAM:</strong></h2>
+      <h2>{{ sale?.vehicle.renavam }}</h2>
+      
+      <div *ngIf="sale?.vehicle.bank != null" >
+        <ion-item class="padding">
+          <ion-thumbnail item-start>
+            <img *ngIf="sale?.vehicle.bank == 1" src="assets/imgs/santander.png">
+            <img *ngIf="sale?.vehicle.bank == 2" src="assets/imgs/nubank.png">
+          </ion-thumbnail>
+          <h2 class="padding"><strong>Valor Pago:</strong></h2>
+          <h2>{{ sale?.vehicle.paidValue | currency: 'BRL' }}</h2>
+        </ion-item>
+      </div>
+      
+      <div class="padding" *ngIf="sale?.vehicle.bank == null" >
+        <h2><strong>Valor Pago:</strong></h2>
+        <h2>{{ sale?.vehicle.paidValue | currency: 'BRL' }}</h2>
+      </div>
+      
+      <h2 class="padding"><strong>Descrição:</strong></h2>
+
+      <div *ngIf="sale?.vehicle.description == ''">
+        <h2>Não consta</h2>
+      </div>
+
+      <div *ngIf="sale?.vehicle.description != ''">
+        <ion-list *ngFor="let description of descriptions">
+          <h2>{{ description }}</h2>
+        </ion-list>
+      </div>
+
+      <h2 class="padding"><strong>Despesas:</strong></h2>
+      
+      <div *ngIf="sale?.vehicle.expenses.length == 0">
+        <h2>Não consta</h2>
+      </div>
+          
+      <div *ngIf="sale?.vehicle.expenses.length != 0">
+        <ion-item *ngFor="let expense of sale?.vehicle.expenses">
+          <ion-thumbnail item-start>
+            <img *ngIf="expense?.bank == 1" src="assets/imgs/santander.png">
+            <img *ngIf="expense?.bank == 2" src="assets/imgs/nubank.png">
+          </ion-thumbnail>
+          <h2 class="padding"><strong>{{expense?.name }}</strong></h2>
+          <h3>{{ expense?.date }}</h3>
+          <h2>Valor: {{ expense?.value | currency:'BRL' }}</h2>
+        </ion-item>
+
+        <h2 class="padding"><strong>Despesas totais: </strong>{{ totalExpenses | currency: 'BRL' }}</h2>
+      </div>
+      
+      <h2 class="padding"><strong>Valor Pago + Despesas totais: </strong></h2>
+      <h2>{{ totalSpend | currency: 'BRL' }}</h2>
+
+      <h2 class="padding"><strong>Valor de venda: </strong></h2>
+      <h2>{{ sale?.vehicle.possibleSellValue | currency: 'BRL' }}</h2>
+
+      <h3 class="padding"><strong>Adicionado em: </strong> {{ sale?.vehicle.date }}</h3>
+    </ion-item>
+  </ion-card>
+ 
+  <ion-card class="cardpad">
+    <ion-card-header>
+      <h2><strong>Dados do Vendedor</strong></h2>
+    </ion-card-header>
+  
+    <ion-item>
+      <h2><strong>Nome: </strong> {{ sale?.vehicle.seller.name }}</h2>
+      <h2 class="padding"><strong>Email: </strong> {{ sale?.vehicle.seller.email }}</h2>
+      <h2 class="padding"><strong>CPF:</strong> {{ sale?.vehicle.seller.cpf }}</h2>
+      <h2 class="padding"><strong>Telefone: </strong> {{ sale?.vehicle.seller.telephone }}</h2>
+      <h2 class="padding"><strong>Telefone: </strong> {{ sale?.vehicle.seller.telephone2 }}</h2>
+
+      <h2 class="padding" text-center><strong>Endereço</strong></h2>
+      <h2 class="padding"><strong>Rua: </strong> {{ sale?.vehicle.seller.address.street }}</h2>
+      <h2 class="padding"><strong>Número: </strong> {{ sale?.vehicle.seller.address.number }}</h2>
+      <h2 class="padding"><strong>Bairro: </strong> {{ sale?.vehicle.seller.address.district }}</h2>
+      <h2 class="padding"><strong>CEP: </strong> {{ sale?.vehicle.seller.address.postalCode }}</h2>
+      <h2 class="padding"><strong>Cidade: </strong> {{ sale?.vehicle.seller.address.city }}</h2>
+      <h2 class="padding"><strong>Estado: </strong> {{ sale?.vehicle.seller.address.state }}</h2>
+    </ion-item>
+  </ion-card>
+
+  <ion-card class="cardpad">
+    <ion-card-header>
+      <h2><strong>Dados do Cliente</strong></h2>
+    </ion-card-header>
+  
+    <ion-item>
+      <h2><strong>Nome: </strong> {{ sale?.client.name }}</h2>
+      <h2 class="padding"><strong>Email: </strong> {{ sale?.client.email }}</h2>
+      <h2 class="padding"><strong>CPF:</strong> {{ sale?.client.cpf }}</h2>
+      <h2 class="padding"><strong>Telefone: </strong> {{ sale?.client.telephone }}</h2>
+      <h2 class="padding"><strong>Telefone: </strong> {{ sale?.client.telephone2 }}</h2>
+
+      <h2 class="padding" text-center><strong>Endereço</strong></h2>
+      <h2 class="padding"><strong>Rua: </strong> {{ sale?.client.street }}</h2>
+      <h2 class="padding"><strong>Número: </strong> {{ sale?.client.address.number }}</h2>
+      <h2 class="padding"><strong>Bairro: </strong> {{ sale?.client.address.district }}</h2>
+      <h2 class="padding"><strong>CEP: </strong> {{ sale?.client.address.postalCode }}</h2>
+      <h2 class="padding"><strong>Cidade: </strong> {{ sale?.client.address.city }}</h2>
+      <h2 class="padding"><strong>Estado: </strong> {{ sale?.client.address.state }}</h2>
+    </ion-item>
+  </ion-card>
+
+  <ion-card class="cardpad">
+    <ion-card-header>
+      <h2><strong>Forma de Pagamento</strong></h2>
+    </ion-card-header>
+  
+    <ion-item>
+      <h2 class="padding"><strong>Vendido por: </strong> {{ sale?.finalValue | currency:'BRL'}}</h2>
+      <h2 class="padding"><strong>Lucro: </strong> {{ sale?.profit | currency:'BRL'}}</h2>
+      <h2 class="padding"><strong>Data:</strong> {{ sale?.date }}</h2>
+    </ion-item>
+
+    <ion-item *ngIf="sale?.payment['@type'] == 'pagamentoÀVista'">
+      <h2 class="padding"><strong>Pagamento: </strong> À Vista</h2>
+
+      <ion-item class="padding">
+        <ion-thumbnail item-start>
+          <img *ngIf="sale?.payment.bank == 1" src="assets/imgs/santander.png">
+          <img *ngIf="sale?.payment.bank == 2" src="assets/imgs/nubank.png">
+        </ion-thumbnail>
+        <h2 class="padding"><strong>Valor Recebido:</strong></h2>
+        <h2>{{ sale?.finalValue | currency: 'BRL' }}</h2>
+      </ion-item>
+    </ion-item>
+
+    <ion-item *ngIf="sale?.payment['@type'] == 'pagamentoÀVistaComTroca'">
+      <h2 class="padding"><strong>Pagamento: </strong> À Vista + Troca</h2>
+      <h2 class="padding"><strong>Modelo do Veículo: </strong> {{sale?.payment.exchangeVehicle.model }}</h2>
+      <h2 class="padding"><strong>Valor do Veículo: </strong> {{sale?.payment.exchangeVehicle.paidValue | currency:'BRL' }}</h2>
+      <h2 class="padding"><strong>Placa do Veículo: </strong> {{sale?.payment.exchangeVehicle.licensePlate }}</h2>
+
+      <ion-item class="padding">
+        <ion-thumbnail item-start>
+          <img *ngIf="sale?.payment.bank == 1" src="assets/imgs/santander.png">
+          <img *ngIf="sale?.payment.bank == 2" src="assets/imgs/nubank.png">
+        </ion-thumbnail>
+        <h2 class="padding"><strong>Valor Recebido:</strong></h2>
+        <h2>{{ sale?.payment.cashValue | currency: 'BRL' }}</h2>
+      </ion-item>
+    </ion-item>
+
+    <ion-item *ngIf="sale?.payment['@type'] == 'pagamentoFinanciado'">
+      <h2 class="padding"><strong>Pagamento: </strong> Financiamento</h2>
+      <h2 class="padding"><strong>Nome do Banco: </strong> {{sale?.payment.name}}</h2>
+      <h2 class="padding"><strong>CNPJ: </strong> {{sale?.payment.cnpj}}</h2>
+      <h2 class="padding"><strong>Telefone: </strong> {{sale?.payment.telephone}}</h2>
+
+      <ion-item class="padding">
+        <ion-thumbnail item-start>
+          <img *ngIf="sale?.payment.inputBank == 1" src="assets/imgs/santander.png">
+          <img *ngIf="sale?.payment.inputBank == 2" src="assets/imgs/nubank.png">
+        </ion-thumbnail>
+        <h2 class="padding"><strong>Valor de Entrada:</strong></h2>
+        <h2>{{ sale?.payment.inputValue | currency: 'BRL' }}</h2>
+      </ion-item>
+      
+      <ion-item class="padding">
+        <ion-thumbnail item-start>
+          <img *ngIf="sale?.payment.fundedBank == 1" src="assets/imgs/santander.png">
+          <img *ngIf="sale?.payment.fundedBank == 2" src="assets/imgs/nubank.png">
+        </ion-thumbnail>
+        <h2 class="padding"><strong>Valor Financiado:</strong></h2>
+        <h2>{{ sale?.payment.fundedValue | currency: 'BRL' }}</h2>
+      </ion-item>
+    </ion-item>
+
+    <ion-item *ngIf="sale?.payment['@type'] == 'pagamentoFinanciadoComTroca'">
+      <h2 class="padding"><strong>Pagamento: </strong> Financiamento + Troca</h2>
+      <h2 class="padding"><strong>Nome do Banco: </strong> {{sale?.payment.name}}</h2>
+      <h2 class="padding"><strong>CNPJ: </strong> {{sale?.payment.cnpj}}</h2>
+      <h2 class="padding"><strong>Telefone: </strong> {{sale?.payment.telephone}}</h2>
+      <h2 class="padding"><strong>Modelo do Veículo: </strong> {{sale?.payment.exchangeVehicle.model }}</h2>
+      <h2 class="padding"><strong>Valor do Veículo: </strong> {{sale?.payment.exchangeVehicle.paidValue | currency:'BRL' }}</h2>
+      <h2 class="padding"><strong>Placa do Veículo: </strong> {{sale?.payment.exchangeVehicle.licensePlate }}</h2>
+
+      <ion-item class="padding">
+        <ion-thumbnail item-start>
+          <img *ngIf="sale?.payment.inputBank == 1" src="assets/imgs/santander.png">
+          <img *ngIf="sale?.payment.inputBank == 2" src="assets/imgs/nubank.png">
+        </ion-thumbnail>
+        <h2 class="padding"><strong>Valor de Entrada:</strong></h2>
+        <h2>{{ sale?.payment.inputValue | currency: 'BRL' }}</h2>
+      </ion-item>
+     
+      <ion-item class="padding">
+        <ion-thumbnail item-start>
+          <img *ngIf="sale?.payment.fundedBank == 1" src="assets/imgs/santander.png">
+          <img *ngIf="sale?.payment.fundedBank == 2" src="assets/imgs/nubank.png">
+        </ion-thumbnail>
+        <h2 class="padding"><strong>Valor Financiado:</strong></h2>
+        <h2>{{ sale?.payment.fundedValue | currency: 'BRL' }}</h2>
+      </ion-item>
+    </ion-item>
+
+    <ion-item *ngIf="sale?.payment['@type'] == 'pagamentoPorConsorcio'">
+      <h2 class="padding"><strong>Pagamento: </strong> Consórcio</h2>
+      <h2 class="padding"><strong>Nome do Banco: </strong> {{sale?.payment.name}}</h2>
+      <h2 class="padding"><strong>CNPJ: </strong> {{sale?.payment.cnpj}}</h2>
+      <h2 class="padding"><strong>Telefone: </strong> {{sale?.payment.telephone}}</h2>
+      <h2 class="padding"><strong>Cota: </strong> {{sale?.payment.quota}}</h2>
+      <h2 class="padding"><strong>Grupo: </strong> {{sale?.payment.group}}</h2>
+
+      <ion-item class="padding">
+        <ion-thumbnail item-start>
+          <img *ngIf="sale?.payment.inputBank == 1" src="assets/imgs/santander.png">
+          <img *ngIf="sale?.payment.inputBank == 2" src="assets/imgs/nubank.png">
+        </ion-thumbnail>
+        <h2 class="padding"><strong>Valor de Entrada:</strong></h2>
+        <h2>{{ sale?.payment.inputValue | currency: 'BRL' }}</h2>  
+      </ion-item>
+     
+      <ion-item class="padding">
+        <ion-thumbnail item-start>
+          <img *ngIf="sale?.payment.consortiumBank == 1" src="assets/imgs/santander.png">
+          <img *ngIf="sale?.payment.consortiumBank == 2" src="assets/imgs/nubank.png">
+        </ion-thumbnail>
+        <h2 class="padding"><strong>Valor do Consórcio:</strong></h2>
+        <h2>{{ sale?.payment.consortiumValue | currency: 'BRL' }}</h2>
+      </ion-item>
+    </ion-item>
+
+    <ion-item *ngIf="sale?.payment['@type'] == 'pagamentoPorConsorcioComTroca'">
+      <h2 class="padding"><strong>Pagamento: </strong> Consórcio</h2>
+      <h2 class="padding"><strong>Nome do Banco: </strong> {{sale?.payment.name}}</h2>
+      <h2 class="padding"><strong>CNPJ: </strong> {{sale?.payment.cnpj}}</h2>
+      <h2 class="padding"><strong>Telefone: </strong> {{sale?.payment.telephone}}</h2>
+      <h2 class="padding"><strong>Cota: </strong> {{sale?.payment.quota}}</h2>
+      <h2 class="padding"><strong>Grupo: </strong> {{sale?.payment.group}}</h2>
+      <h2 class="padding"><strong>Modelo do Veículo: </strong> {{sale?.payment.exchangeVehicle.model }}</h2>
+      <h2 class="padding"><strong>Valor do Veículo: </strong> {{sale?.payment.exchangeVehicle.paidValue | currency:'BRL' }}</h2>
+      <h2 class="padding"><strong>Placa do Veículo: </strong> {{sale?.payment.exchangeVehicle.licensePlate }}</h2>
+
+      <ion-item class="padding">
+        <ion-thumbnail item-start>
+          <img *ngIf="sale?.payment.inputBank == 1" src="assets/imgs/santander.png">
+          <img *ngIf="sale?.payment.inputBank == 2" src="assets/imgs/nubank.png">
+        </ion-thumbnail>
+        <h2 class="padding"><strong>Valor de Entrada:</strong></h2>
+        <h2>{{ sale?.payment.inputValue | currency: 'BRL' }}</h2>
+      </ion-item>
+
+      <ion-item class="padding">
+        <ion-thumbnail item-start>
+          <img *ngIf="sale?.payment.consortiumBank == 1" src="assets/imgs/santander.png">
+          <img *ngIf="sale?.payment.consortiumBank == 2" src="assets/imgs/nubank.png">
+        </ion-thumbnail>
+        <h2 class="padding"><strong>Valor do Consórcio:</strong></h2>
+        <h2>{{ sale?.paymentconsortiumValue | currency: 'BRL' }}</h2>
+      </ion-item>
+    </ion-item>
+
+    <ion-item *ngIf="sale?.payment['@type'] == 'pagamentoTrocaComTroco'">
+      <h2 class="padding"><strong>Pagamento: </strong> Troca com Troco</h2>
+      <h2 class="padding"><strong>Modelo do Veículo: </strong> {{sale?.payment.exchangeVehicle.model }}</h2>
+      <h2 class="padding"><strong>Valor do Veículo: </strong> {{sale?.payment.exchangeVehicle.paidValue | currency:'BRL' }}</h2>
+      <h2 class="padding"><strong>Placa do Veículo: </strong> {{sale?.payment.exchangeVehicle.licensePlate }}</h2>
+
+      <ion-item class="padding">
+        <ion-thumbnail item-start>
+          <img *ngIf="sale?.payment.bank == 1" src="assets/imgs/santander.png">
+          <img *ngIf="sale?.payment.bank == 2" src="assets/imgs/nubank.png">
+        </ion-thumbnail>
+        <h2 class="padding"><strong>Troco:</strong></h2>
+        <h2>{{ sale?.payment.cashback | currency: 'BRL' }}</h2>
+      </ion-item>
+    </ion-item>
+    
+  </ion-card>
+
+  
 </ion-content>

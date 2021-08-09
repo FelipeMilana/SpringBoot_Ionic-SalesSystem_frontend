@@ -18,6 +18,10 @@ export class SaleService {
         return this.http.get(`${API_CONFIG.baseURL}/sales/vehicleModelOrLicensePlate?value=${str}&&page=${page}&&size=${size}&&sort=${sort}&&direction=${direction}`)
     }
 
+    findById(id: string) {
+        return this.http.get(`${API_CONFIG.baseURL}/sales/${id}`);
+    }
+
     insert(obj: SaleDTO, id: string) {
         return this.http.post(`${API_CONFIG.baseURL}/sales/${id}`,
         obj,

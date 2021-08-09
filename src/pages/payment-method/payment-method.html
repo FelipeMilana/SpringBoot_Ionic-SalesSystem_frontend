@@ -35,7 +35,7 @@
 
       <ion-item>
         <ion-label>Consórcio</ion-label>
-        <ion-radio value="pagamentoPorConsórcio"></ion-radio>
+        <ion-radio value="pagamentoPorConsorcio"></ion-radio>
       </ion-item>
     </ion-list>
 
@@ -56,7 +56,7 @@
 
       <ion-item>
         <ion-label>Consórcio</ion-label>
-        <ion-radio value="pagamentoPorConsórcioComTroca"></ion-radio>
+        <ion-radio value="pagamentoPorConsorcioComTroca"></ion-radio>
       </ion-item>
     </ion-list>
     
@@ -88,7 +88,7 @@
     </ion-list>
 
     <ion-item *ngIf="formGroup.value['@type'] != 'pagamentoÀVista' && formGroup.value['@type'] != 'pagamentoÀVistaComTroca' && formGroup.value['@type'] != ''">
-      <ion-label stacked>Nome*:</ion-label>
+      <ion-label stacked>Nome do Banco*:</ion-label>
       <ion-input formControlName="name" type="text"></ion-input>
     </ion-item>
 
@@ -102,12 +102,12 @@
       <ion-input formControlName="telephone" type="number"></ion-input>
     </ion-item>
 
-    <ion-item *ngIf="formGroup.value['@type'] == 'pagamentoPorConsórcio' || formGroup.value['@type'] == 'pagamentoPorConsórcioComTroca' ">
+    <ion-item *ngIf="formGroup.value['@type'] == 'pagamentoPorConsorcio' || formGroup.value['@type'] == 'pagamentoPorConsorcioComTroca' ">
       <ion-label stacked>Cota*:</ion-label>
       <ion-input formControlName="quota" type="text"></ion-input>
     </ion-item>
 
-    <ion-item *ngIf="formGroup.value['@type'] == 'pagamentoPorConsórcio' || formGroup.value['@type'] == 'pagamentoPorConsórcioComTroca'">
+    <ion-item *ngIf="formGroup.value['@type'] == 'pagamentoPorConsorcio' || formGroup.value['@type'] == 'pagamentoPorConsorcioComTroca'">
       <ion-label stacked>Grupo*:</ion-label>
       <ion-input formControlName="group" type="text"></ion-input>
     </ion-item>
@@ -166,12 +166,12 @@
       </ion-item>
     </ion-list>
 
-    <ion-item *ngIf="formGroup.value['@type'] == 'pagamentoPorConsórcio' || formGroup.value['@type'] == 'pagamentoPorConsórcioComTroca'">
+    <ion-item *ngIf="formGroup.value['@type'] == 'pagamentoPorConsorcio' || formGroup.value['@type'] == 'pagamentoPorConsorcioComTroca'">
       <ion-label stacked>Valor do Consórcio (R$)*:</ion-label>
       <ion-input formControlName="consortiumValue" type="number" placeholder="0,00"></ion-input>
     </ion-item>
 
-    <ion-list *ngIf="formGroup.value['@type'] == 'pagamentoPorConsórcio' || formGroup.value['@type'] == 'pagamentoPorConsórcioComTroca'" class="padding" radio-group formControlName="consortiumBank">
+    <ion-list *ngIf="formGroup.value['@type'] == 'pagamentoPorConsorcio' || formGroup.value['@type'] == 'pagamentoPorConsorcioComTroca'" class="padding" radio-group formControlName="consortiumBank">
       <ion-list-header>
         Escolha o banco para o valor do consórcio:
       </ion-list-header>
