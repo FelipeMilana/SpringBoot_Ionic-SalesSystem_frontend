@@ -35,8 +35,8 @@
 
           <h2>{{ sale?.vehicle.model }}, {{ sale?.vehicle.version }}, {{ sale?.vehicle.color }}</h2>
           <h2><strong>Ano: </strong> {{ sale?.vehicle.modYear }}</h2>
-          <h2> <strong>Placa: </strong> {{ sale?.vehicle.licensePlate }}</h2>
-          <h2> <strong>Data: </strong> {{ sale?.date }}</h2>
+          <h2><strong>Placa: </strong> {{ sale?.vehicle.licensePlate }}</h2>
+          <h2><strong>Data: </strong> {{ sale?.date }}</h2>
           <h2><strong>Venda: </strong> {{ sale?.finalValue | currency:'BRL' }}</h2>
           <h2><strong>Lucro: </strong> <h2 class="green">{{ sale?.profit | currency:'BRL' }}</h2></h2>
       </button>
