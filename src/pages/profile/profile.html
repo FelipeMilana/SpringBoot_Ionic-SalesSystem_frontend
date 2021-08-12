@@ -11,8 +11,8 @@
     </ion-card-header>
 
     <ion-item>
-      <h2>Nome: {{user?.name}}</h2>
-      <h2 class="padding">Email: {{user?.email}}</h2>
+      <h2><strong>Nome: </strong> {{ user?.name }}</h2>
+      <h2 class="padding"><strong>Email: </strong> {{user?.email }}</h2>
     </ion-item>
   </ion-card>
   <button color="tertiary" ion-button small block (click)="updateData(user)">Atualizar</button>
@@ -23,23 +23,23 @@
     </ion-card-header>
 
     <ion-item>
-      <b>Saldo Total: {{user?.santanderBalance + user?.nubankBalance | currency:'BRL'}}</b>
+      <h2><strong>Saldo Total: {{user?.santanderBalance + user?.nubankBalance | currency:'BRL'}}</strong></h2>
     </ion-item>
 
     <ion-item>
       <ion-thumbnail item-start>
         <img src="assets/imgs/santander.png">
       </ion-thumbnail>
-      <b>Saldo: {{user?.santanderBalance | currency:'BRL'}}</b>
-      <button color="tertiary" ion-button block (click)="updateDataBankSantander()">Atualizar</button>
+      <h2><strong>Saldo: {{user?.santanderBalance | currency:'BRL'}}</strong></h2>
+      <button color="tertiary" ion-button block (click)="updateDataBankSantander()">Adicionar</button>
     </ion-item>
 
     <ion-item>
       <ion-thumbnail item-start>
         <img src="assets/imgs/nubank.png">
       </ion-thumbnail>
-      <b>Saldo: {{user?.nubankBalance | currency:'BRL'}}</b>
-      <button color="tertiary" ion-button block (click)="updateDataBankNubank()">Atualizar</button>
+      <h2><strong>Saldo: {{user?.nubankBalance | currency:'BRL'}}</strong></h2>
+      <button color="tertiary" ion-button block (click)="updateDataBankNubank()">Adicionar</button>
     </ion-item>
   </ion-card>
 </ion-content>

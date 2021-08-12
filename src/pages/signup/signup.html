@@ -7,26 +7,26 @@
 <ion-content padding>
   <form [formGroup]="formGroup" (ngSubmit)="signupUser(); $event.preventDefault()">
     <ion-item>
-      <ion-label stacked>Nome</ion-label>
+      <ion-label stacked>Nome*</ion-label>
       <ion-input formControlName="name" type="text"></ion-input>
     </ion-item>
     <p class="danger" *ngIf="formGroup.controls.name.dirty && formGroup.controls.name.errors" margin-left>Nome inválido</p>
 
     <ion-item>
-      <ion-label stacked>Email</ion-label>
+      <ion-label stacked>Email*</ion-label>
       <ion-input formControlName="email" type="email" placeholder="example@gmail.com"></ion-input>
     </ion-item>
     <p class="danger" *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors" margin-left>Email inválido</p>
 
     <ion-item>
-      <ion-label stacked>Senha</ion-label>
+      <ion-label stacked>Senha*</ion-label>
       <ion-input formControlName="password" type="password"></ion-input>
     </ion-item>
     <p class="danger" *ngIf="formGroup.controls.password.dirty && formGroup.controls.password.errors" margin-left>Senha inválida</p>
 
     <ion-card>
       <ion-card-header>
-        <b>Dados Bancários</b>
+        <b>Dados Bancários*</b>
       </ion-card-header>
 
         <img src="assets/imgs/santander.png">
@@ -45,6 +45,7 @@
 
     </ion-card>
  
+    <p text-center>Preencha os campos marcados com *</p>
     <button color="tertiary" ion-button block type="submit" [disabled]="formGroup.invalid">Cadastrar</button>
   </form>
 </ion-content>

@@ -21,7 +21,7 @@
     <h5>Ticket Médio: {{ ticketValue | currency:'BRL' }}</h5>
 
     <ion-toolbar>
-      <ion-searchbar showCancelButton="true" (search)="searchBar($event)" (ionCancel)="cancelSearchBar()"></ion-searchbar>
+      <ion-searchbar showCancelButton="true" (search)="searchBar($event)" (ionCancel)="cancelSearchBar()" placeholder="Digite a placa ou modelo do veículo"></ion-searchbar>
     </ion-toolbar>
 
     <ion-list>

@@ -48,7 +48,7 @@ export class InsertVehiclePage {
   insert() {
     let alert = this.alertCtrl.create({
       title: 'Aviso',
-      message: 'Deseja adicionar esse carro ao estoque?',
+      message: 'Deseja adicionar esse veículo no estoque?',
       enableBackdropDismiss: false,
       buttons:[
         {

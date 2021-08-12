@@ -8,13 +8,13 @@
   <form [formGroup]="formGroup" (ngSubmit)="next(); $event.preventDefault()">
 
     <ion-item>
-      <ion-label stacked>Valor final (R$)</ion-label>
+      <ion-label stacked>Valor final (R$)*</ion-label>
       <ion-input formControlName="finalValue" type="number"></ion-input>
     </ion-item>
 
     <ion-list class="padding" radio-group formControlName="type">
       <ion-list-header>
-        Selecione*
+        Selecione
       </ion-list-header>
 
       <ion-item>

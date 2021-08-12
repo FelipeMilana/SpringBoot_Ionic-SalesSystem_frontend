@@ -17,7 +17,7 @@
 
   <div *ngIf="withdraws.length != 0">
     <ion-toolbar>
-      <ion-searchbar showCancelButton="true" (search)="searchBar($event)" (ionCancel)="cancelSearchBar()"></ion-searchbar>
+      <ion-searchbar showCancelButton="true" (search)="searchBar($event)" (ionCancel)="cancelSearchBar()" placeholder="Digite o banco ou a descrição"></ion-searchbar>
     </ion-toolbar>
 
     <ion-list>
@@ -31,9 +31,8 @@
             <img *ngIf="withdraw?.bank == 1" class="imgpadding" src="assets/imgs/santander.png">
             <img *ngIf="withdraw?.bank == 2" class="imgpadding" src="assets/imgs/nubank.png">
           </ion-thumbnail>
-
-          <h3>Data: {{withdraw?.date}}</h3>
-          <h3>Valor: {{withdraw?.value | currency:'BRL'}}</h3>
+          <h3 text-center><strong>Data: {{withdraw?.date}}</strong></h3>
+          <h3 text-center><strong>Valor: {{withdraw?.value | currency:'BRL'}}</strong></h3>
           <button color="tertiary" ion-button block (click)="delete(withdraw?.id)">Deletar</button>
         </ion-item>
       </ion-card>

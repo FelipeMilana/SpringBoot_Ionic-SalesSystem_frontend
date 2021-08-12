@@ -6,12 +6,8 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-title>
-    Digite o CPF
-  </ion-title>
-
   <ion-toolbar>
-    <ion-searchbar showCancelButton="true" (search)="searchBar($event)" (ionCancel)="cancelSearchBar()"></ion-searchbar>
+    <ion-searchbar showCancelButton="true" (search)="searchBar($event)" (ionCancel)="cancelSearchBar()" placeholder="Digite o CPF"></ion-searchbar>
   </ion-toolbar>
 
   <div *ngIf="person != null">

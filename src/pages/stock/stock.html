@@ -21,7 +21,7 @@
     <h5>Estoque (V): {{ sellValuesInStock | currency:'BRL' }}</h5>
 
     <ion-toolbar>
-      <ion-searchbar showCancelButton="true" (search)="searchBar($event)" (ionCancel)="cancelSearchBar()"></ion-searchbar>
+      <ion-searchbar showCancelButton="true" (search)="searchBar($event)" (ionCancel)="cancelSearchBar()" placeholder="Digite a placa ou modelo do veículo"></ion-searchbar>
     </ion-toolbar>
 
     <ion-list>
@@ -29,14 +29,15 @@
        
 
         <ion-thumbnail item-start>
-          <b>{{ vehicle?.brand }}</b>
+          <h2 text-center> <strong>{{ vehicle?.brand }}</strong></h2>
           <img *ngIf="vehicle?.type == 1" class="imgpadding" src="assets/imgs/carro.png">
           <img *ngIf="vehicle?.type == 2" class="imgpadding" src="assets/imgs/moto.png">
         </ion-thumbnail>
 
-          <h2>{{ vehicle?.model }}, {{ vehicle?.version }}, cor  {{ vehicle?.color }}</h2>
-          <h2> Placa: {{ vehicle?.licensePlate }}</h2>
-          <b>Valor: {{vehicle?.possibleSellValue | currency:'BRL' }}</b>
+          <h2>{{ vehicle?.model }}, {{ vehicle?.version }}, {{ vehicle?.color }}</h2>
+          <h2><strong>Ano: </strong> {{ vehicle?.modYear }}</h2>
+          <h2><strong>Placa: </strong> {{ vehicle?.licensePlate }}</h2>
+          <h2><strong>Valor: {{vehicle?.possibleSellValue | currency:'BRL' }}</strong></h2>
       </button>
     </ion-list>
 
