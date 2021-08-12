@@ -1,3 +1,3 @@
 export const API_CONFIG = {
-    baseURL: "http://localhost:8080"
+    baseURL: "https://sales-system-project.herokuapp.com"
 }
