@@ -7,7 +7,7 @@
 
 <ion-content padding>
   <ion-toolbar>
-    <ion-searchbar showCancelButton="true" (search)="searchBar($event)" (ionCancel)="cancelSearchBar()" placeholder="Digite o CPF"></ion-searchbar>
+    <ion-searchbar showCancelButton="true" (search)="searchBar($event)" (ionCancel)="cancelSearchBar()" placeholder="Digite o CPF ou CNPJ"></ion-searchbar>
   </ion-toolbar>
 
   <div *ngIf="person != null">
@@ -19,7 +19,7 @@
       <ion-item>
         <h2><strong>Nome: </strong> {{person?.name}}</h2>
         <h2 class="padding"><strong>Email: </strong> {{person?.email}}</h2>
-        <h2 class="padding"><strong>CPF: </strong> {{person?.cpf}}</h2>
+        <h2 class="padding"><strong>CPF/CNPJ: </strong> {{person?.cpfCnpj}}</h2>
         <h2 class="padding"><strong>Telefone: </strong> {{person?.telephone}}</h2>
         <h2 class="padding"><strong>Telefone: </strong> {{person?.telephone2}}</h2>
       </ion-item>

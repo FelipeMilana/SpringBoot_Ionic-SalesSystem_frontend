@@ -28,7 +28,7 @@ export class UpdateSellerOrClientPage {
         id:[this.person.id, []],
         name: [this.person.name, [Validators.required]],
         email: [this.person.email, []],
-        cpf: [this.person.cpf, [Validators.required]],
+        cpfCnpj: [this.person.cpfCnpj, [Validators.required]],
         telephone: [this.person.telephone, [Validators.required]],
         telephone2: [this.person.telephone2, []],
         address: this.formBuilder.group({

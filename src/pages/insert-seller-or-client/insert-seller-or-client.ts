@@ -25,7 +25,7 @@ export class InsertSellerOrClientPage {
         id:[null, []],
         name: ['', [Validators.required]],
         email: ['', []],
-        cpf: ['', [Validators.required]],
+        cpfCnpj: ['', [Validators.required]],
         telephone: ['', [Validators.required]],
         telephone2: ['', []],
         address: this.formBuilder.group({

@@ -29,7 +29,7 @@ export class SellerOrClientPage {
   searchBar(event) {
     let loader = this.presentLoading();
 
-    this.personService.findByCpf(event.target.value)
+    this.personService.findByCpfCnpj(event.target.value)
       .subscribe(response => {
         loader.dismiss();
         this.person = response as PersonDTO;

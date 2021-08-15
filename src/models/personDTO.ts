@@ -4,7 +4,7 @@ export interface PersonDTO {
     id: string;
     name: string;
     email: string;
-    cpf: string;
+    cpfCnpj: string;
     telephone: string;
     telephone2: string;
     address: AddressDTO;

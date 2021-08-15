@@ -10,8 +10,8 @@ export class PersonService {
         public http: HttpClient){
     }
 
-    findByCpf(cpf: string) {
-        return this.http.get(`${API_CONFIG.baseURL}/persons/cpf?value=${cpf}`);
+    findByCpfCnpj(cpfCnpj: string) {
+        return this.http.get(`${API_CONFIG.baseURL}/persons/cpfCnpj?value=${cpfCnpj}`);
     }
 
     update(obj: PersonDTO, id: string) {
