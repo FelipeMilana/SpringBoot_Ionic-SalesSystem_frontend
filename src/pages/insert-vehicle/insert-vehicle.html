@@ -62,20 +62,17 @@
       <ion-label stacked>Placa do Veículo*</ion-label>
       <ion-input formControlName="licensePlate" type="text"></ion-input>
     </ion-item>
-    <p class="danger" *ngIf="formGroup.controls.licensePlate.dirty && formGroup.controls.licensePlate.errors" margin-left>Inválido - Deve possuir 7 caracteres</p>
-
+   
     <ion-item>
       <ion-label stacked>Número do chassi*</ion-label>
       <ion-input formControlName="chassi" type="text"></ion-input>
     </ion-item>
-    <p class="danger" *ngIf="formGroup.controls.chassi.dirty && formGroup.controls.chassi.errors" margin-left>Inválido - Deve possuir 17 caracteres</p>
-
+    
     <ion-item>
       <ion-label stacked>Número do RENAVAM*</ion-label>
       <ion-input formControlName="renavam" type="text"></ion-input>
     </ion-item>
-    <p class="danger" *ngIf="formGroup.controls.renavam.dirty && formGroup.controls.renavam.errors" margin-left>Inválido - Deve possuir 11 caracteres</p>
-
+    
     <ion-item>
       <ion-label stacked>Descrição</ion-label>
       <ion-input formControlName="description" type="text"></ion-input>

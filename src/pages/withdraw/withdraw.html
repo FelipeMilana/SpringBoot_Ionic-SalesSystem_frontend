@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Minhas Retiradas</ion-title>
+    <ion-title>Minhas Despesas</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -17,7 +17,7 @@
 
   <div *ngIf="withdraws.length != 0">
     <ion-toolbar>
-      <ion-searchbar showCancelButton="true" (search)="searchBar($event)" (ionCancel)="cancelSearchBar()" placeholder="Digite o banco ou a descrição"></ion-searchbar>
+      <ion-searchbar showCancelButton="true" (search)="searchBar($event)" (ionCancel)="cancelSearchBar()" placeholder="Digite o banco ou descrição"></ion-searchbar>
     </ion-toolbar>
 
     <ion-list>

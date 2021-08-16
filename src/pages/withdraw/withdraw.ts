@@ -49,7 +49,7 @@ export class WithdrawPage {
   delete(id:string) {
     let alert = this.alertCtrl.create({
       title:'Aviso',
-      message:'Você deseja  deletar essa retirada?',
+      message:'Você deseja deletar essa despesa?',
       enableBackdropDismiss: false,
       buttons:[
         {
@@ -116,7 +116,7 @@ export class WithdrawPage {
   showSuccessfulAlert() {
     let alert = this.alertCtrl.create({
       title:'Sucesso',
-      message:'Retirada deletada!',
+      message:'Despesa deletada!',
       enableBackdropDismiss: false,
       buttons:[
         {
@@ -130,7 +130,7 @@ export class WithdrawPage {
   showFailedSearchBar() {
     let alert = this.alertCtrl.create({
       title: 'Alerta',
-      message: 'Não há retiradas',
+      message: 'Não há despesas',
       enableBackdropDismiss: false,
       buttons: [
         {

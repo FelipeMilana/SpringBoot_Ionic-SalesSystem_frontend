@@ -51,7 +51,7 @@ export class InsertWithdrawPage {
   showSuccessfulAlert() {
     let alert = this.alertCtrl.create({
       title: 'Sucesso',
-      message: 'Retirada efetuada!',
+      message: 'Despesa cadastrada!',
       enableBackdropDismiss: false,
       buttons: [
         {
