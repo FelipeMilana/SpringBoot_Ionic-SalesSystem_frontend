@@ -7,24 +7,24 @@ e fazer suas retiradas. Além disso, é possível gerar um relatório com todas 
 
 ## Layout Mobile
 <p>
-  <img width="216" height="468" src=https://github.com/FelipeMilana/Assets/blob/main/SalesSystem%2324.jpeg>
-  <img width="216" height="468" src=https://github.com/FelipeMilana/Assets/blob/main/SalesSystem%2323.jpeg>
-  <img width="216" height="468" src=https://github.com/FelipeMilana/Assets/blob/main/SalesSystem%2322.jpeg>
-  <img width="216" height="468" src=https://github.com/FelipeMilana/Assets/blob/main/SalesSystem%2321.jpeg>
+  <img width="180" height="390" src=https://github.com/FelipeMilana/Assets/blob/main/SalesSystem%2324.jpeg>
+  <img width="180" height="390" src=https://github.com/FelipeMilana/Assets/blob/main/SalesSystem%2323.jpeg>
+  <img width="180" height="390" src=https://github.com/FelipeMilana/Assets/blob/main/SalesSystem%2322.jpeg>
+  <img width="180" height="390" src=https://github.com/FelipeMilana/Assets/blob/main/SalesSystem%2321.jpeg>
 </p>
 
 <p>
-  <img width="216" height="468" src=https://github.com/FelipeMilana/Assets/blob/main/SalesSystem%2319.jpeg>
-  <img width="216" height="468" src=https://github.com/FelipeMilana/Assets/blob/main/SalesSystem%2316.jpeg>
-  <img width="216" height="468" src=https://github.com/FelipeMilana/Assets/blob/main/SalesSystem%2315.jpeg>
-  <img width="216" height="468" src=https://github.com/FelipeMilana/Assets/blob/main/SalesSystem%2313.jpeg>
+  <img width="180" height="390" src=https://github.com/FelipeMilana/Assets/blob/main/SalesSystem%2319.jpeg>
+  <img width="180" height="390" src=https://github.com/FelipeMilana/Assets/blob/main/SalesSystem%2316.jpeg>
+  <img width="180" height="390" src=https://github.com/FelipeMilana/Assets/blob/main/SalesSystem%2315.jpeg>
+  <img width="180" height="390" src=https://github.com/FelipeMilana/Assets/blob/main/SalesSystem%2313.jpeg>
 </p>
 
 <p>
-  <img width="216" height="468" src=https://github.com/FelipeMilana/Assets/blob/main/SalesSystem%2312.jpeg>
-  <img width="216" height="468" src=https://github.com/FelipeMilana/Assets/blob/main/SalesSystem%2311.jpeg>
-  <img width="216" height="468" src=https://github.com/FelipeMilana/Assets/blob/main/SalesSystem%2310.jpeg>
-  <img width="216" height="468" src=https://github.com/FelipeMilana/Assets/blob/main/SalesSystem%239.jpeg>
+  <img width="180" height="390" src=https://github.com/FelipeMilana/Assets/blob/main/SalesSystem%2312.jpeg>
+  <img width="180" height="390" src=https://github.com/FelipeMilana/Assets/blob/main/SalesSystem%2311.jpeg>
+  <img width="180" height="390" src=https://github.com/FelipeMilana/Assets/blob/main/SalesSystem%2310.jpeg>
+  <img width="180" height="390" src=https://github.com/FelipeMilana/Assets/blob/main/SalesSystem%239.jpeg>
 </p>
 
 <p>
